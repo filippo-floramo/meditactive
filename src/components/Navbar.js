@@ -4,15 +4,17 @@ import logo from "../img/logo.svg"
 
 export default function Navbar() {
 
+   
+/** Aggiugere modalità notte conditionale solo per il colore background, preferibile gradiente in entrambi casi */
 
    return (
-      <div className="navbar">
+      <nav className="navbar">
          <Link className="navbar--link"  to="/">
             <div className="navbar--content">
                <img src={logo} className="logo" alt="logo" />
                <h2 className="app--name">Meditactive</h2>
             </div>
          </Link>
-      </div>
+      </nav>
    )
 }

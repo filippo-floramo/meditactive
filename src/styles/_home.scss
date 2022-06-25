@@ -1,0 +1,22 @@
+
+.landing::before {
+   display: block;
+   content:' ';
+   height: 70px;
+}
+
+.landing {
+   background-color: blue;
+   height: 100vh;
+
+   display: flex;
+   flex-direction: column;
+   align-items: center;
+
+
+   &--cards {
+      margin-top: 200px;
+      display: flex;
+      flex-direction: row;
+   }
+}
