@@ -1,9 +1,14 @@
 @import "navbar";
 @import "home";
 @import "card";
+@import "timer";
 
 * {
    margin: 0;
    padding: 0;
    box-sizing: border-box;
+}
+
+.route--link {
+   text-decoration: none;
 }

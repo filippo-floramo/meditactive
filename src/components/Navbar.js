@@ -9,7 +9,7 @@ export default function Navbar() {
 
    return (
       <nav className="navbar">
-         <Link className="navbar--link"  to="/">
+         <Link className="navbar--link  route--link"  to="/">
             <div className="navbar--content">
                <img src={logo} className="logo" alt="logo" />
                <h2 className="app--name">Meditactive</h2>
