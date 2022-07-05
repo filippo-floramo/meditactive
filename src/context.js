@@ -20,14 +20,9 @@ export function ContextProvider({ children }) {
    ];
 
    function chill(item) {
-
       if (item === "Sleep") {
-
          setIsSleep(true);
-
-      } else {
-         console.log("sbigghiti u sangu")
-      }
+      } 
    }
 
 
