@@ -1,5 +1,7 @@
 import React from "react";
 
+// import playButton from "../img/play-button.svg"
+import pauseButton from "../img/pause-button.svg"
 
 export default function Timer() {
    return (
@@ -7,9 +9,9 @@ export default function Timer() {
       <main className="timer--container">
          <div className="timer--container--sections">
 
-            <div className="decrement--buttons">
-               <button>-30s </button>
-               <button>-5m </button>
+            <div className="decrement ">
+               <button className="buttons">-5m </button>
+               <button className="buttons">-30s </button>
             </div>
 
             <div className="time--display">
@@ -17,13 +19,13 @@ export default function Timer() {
                   <h3>00:00</h3>
                </div>
                <div className="play">
-                  Ciaso
+                  <img className="play--button" src={pauseButton} alt="play" />
                </div>
             </div>
 
-            <div className="increment--buttons">
-               <button> +30s </button>
-               <button> +5m </button>
+            <div className="increment">
+               <button className="buttons"> +5m </button>
+               <button className="buttons"> +30s </button>
             </div>
          </div>
       </main>
