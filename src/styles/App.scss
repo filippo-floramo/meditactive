@@ -1,8 +1,14 @@
 @import "navbar";
 @import "home";
 @import "card";
-@import "timer/timer";
+@import "timer/timer-display";
 @import "timer/timer-buttons";
+@import "timer/_timer-waves";
+
+
+html, body {
+   height: 100%;
+}
 
 * {
    margin: 0;

@@ -1,9 +1,9 @@
-import Home from "./pages/Home"
-import './styles/App.scss';
 import Navbar from "./components/Navbar";
-import Timer from "./components/Timer";
+import Home from "./pages/Home"
+import Meditate from "./pages/Meditate";
 import { ContextProvider } from "./context";
 import { Routes, Route } from "react-router-dom";
+import './styles/App.scss';
 
 function App() {
   return (
@@ -12,7 +12,7 @@ function App() {
         <Navbar />
         <Routes>
           <Route path="/" element={<Home />} />
-          <Route path="/meditate" element={<Timer />} />
+          <Route path="/meditate" element={<Meditate />} />
         </Routes>
       </ContextProvider>
     </>
