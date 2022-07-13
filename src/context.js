@@ -1,4 +1,4 @@
-import { createContext, useState } from "react";
+import { createContext, useState, useRef } from "react";
 
 
 
@@ -22,8 +22,10 @@ export function ContextProvider({ children }) {
    function chill(item) {
       if (item === "Sleep") {
          setIsSleep(true);
-      } 
+      }
    }
+
+   const lol = useRef(null);
 
 
    return (
@@ -31,6 +33,7 @@ export function ContextProvider({ children }) {
          cardData,
          chill,
          isSleep,
+         lol
 
       }}>
          {children}
