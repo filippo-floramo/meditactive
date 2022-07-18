@@ -1,0 +1,26 @@
+
+
+.time--handlers {
+   display: flex;
+   align-items: center;
+   justify-content: space-between;
+   margin-top: 40px;
+   border: 1px solid aqua;
+   height: 60px;
+   width: 100%;
+
+
+
+   .handler {
+
+      background-color: aqua;
+      border: none;
+      width: 55px;
+      height: 55px;
+      border-radius: 50%;
+
+      cursor: pointer;
+   }
+}
+
+

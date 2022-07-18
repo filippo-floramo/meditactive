@@ -11,11 +11,10 @@ import Context from "../../context";
 
 export default function TimerButtons(props) {
 
-   const { lol } = useContext(Context);
+   const { countdown, setIsPlay } = useContext(Context);
 
    const playTimer = () => {
-      console.log(lol.current)
-      lol.current.start()
+      setIsPlay( prevState => prevState += 50000)
    }
 
    return (

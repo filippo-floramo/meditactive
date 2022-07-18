@@ -8,6 +8,8 @@ export function ContextProvider({ children }) {
 
    const [isSleep, setIsSleep] = useState(false);
 
+   const [isPlay, setIsPlay] = useState(5000);
+
    const cardData = [
       {
          icon: "lol",
@@ -25,7 +27,10 @@ export function ContextProvider({ children }) {
       }
    }
 
-   const lol = useRef(null);
+
+   const countdown = useRef(null);
+
+
 
 
    return (
@@ -33,7 +38,9 @@ export function ContextProvider({ children }) {
          cardData,
          chill,
          isSleep,
-         lol
+         countdown,
+         isPlay,
+         setIsPlay,
 
       }}>
          {children}
