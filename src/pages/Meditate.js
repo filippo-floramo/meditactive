@@ -12,9 +12,21 @@ export default function Meditate() {
       <main className="timer--container">
          <div className="timer--container--sections">
 
-            <TimerButtons secs="-30s" min="-5min" type="decrement" />
+            <TimerButtons
+               seconds="-30s"
+               minutes="-5min"
+               minutesValue={300000}
+               secondsValue={30000}
+               type="decrement"
+            />
             <TimerDisplay />
-            <TimerButtons secs="+30s" min="+5min" type="increment" />
+            <TimerButtons
+               seconds="+30s"
+               minutes="+5min"
+               secondsValue={30000}
+               minutesValue={300000}
+               type="increment"
+            />
 
          </div>
          <TimerWaves />

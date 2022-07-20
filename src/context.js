@@ -8,7 +8,9 @@ export function ContextProvider({ children }) {
 
    const [isSleep, setIsSleep] = useState(false);
 
-   const [isPlay, setIsPlay] = useState(5000);
+   const [timerCount, setTimerCount] = useState(0);
+
+   const [isStarted, setIsStarted] = useState(false);
 
    const cardData = [
       {
@@ -39,8 +41,10 @@ export function ContextProvider({ children }) {
          chill,
          isSleep,
          countdown,
-         isPlay,
-         setIsPlay,
+         timerCount,
+         setTimerCount,
+         isStarted,
+         setIsStarted,
 
       }}>
          {children}

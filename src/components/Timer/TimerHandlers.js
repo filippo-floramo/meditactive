@@ -7,7 +7,7 @@ import Context from "../../context";
 export default function TimerHandlers() {
 
 
-   const { countdown, isPlay } = useContext(Context);
+   const { countdown, setIsStarted, isStarted, setTimerCount } = useContext(Context);
 
 
 
@@ -15,10 +15,13 @@ export default function TimerHandlers() {
    return (
 
       <div className="time--handlers">
-         {isPlay && <button className="handler pause" onClick={() => { countdown.current.pause() }}>Pause</button>}
-         <button className="handler play" onClick={() => { countdown.current.start() }
-         }>Play</button>
-         <button className="handler reset" onClick={() => { countdown.current.stop() }}>Reset</button>
+         <button className="handler pause" onClick={() => { countdown.current.pause() }}>Pause</button>
+         <button className="handler play" onClick={() => { countdown.current.start(); setIsStarted(true) }}>Start</button>
+         {
+            isStarted ?
+               <button className="handler stop" onClick={() => { countdown.current.stop(); setIsStarted(false) }}>Stop</button> :
+               <button className="handler reset" onClick={() => { setTimerCount(0) }}>Reset</button>
+         }
       </div>
    )
 }
