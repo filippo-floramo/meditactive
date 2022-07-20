@@ -12,6 +12,10 @@ export function ContextProvider({ children }) {
 
    const [isStarted, setIsStarted] = useState(false);
 
+   
+   const countdown = useRef(null);
+
+
    const cardData = [
       {
          icon: "lol",
@@ -30,7 +34,6 @@ export function ContextProvider({ children }) {
    }
 
 
-   const countdown = useRef(null);
 
 
 

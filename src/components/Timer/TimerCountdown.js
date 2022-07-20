@@ -7,21 +7,21 @@ import TimerHandlers from "./TimerHandlers";
 
 export default function TimerCountdown() {
 
-   const { countdown, timerCount} = useContext(Context)
+   const { countdown, timerCount } = useContext(Context);
 
-console.log("rirenderizzato");
+   console.log("rirenderizzato");
 
-   const renderer = ({ minutes, seconds }) => {
+   const renderer = ({ minutes, seconds, hours }) => {
 
 
 
       return (
          <div className="time--display">
             <div className="timer">
-               <h3 className="timer--count">{zeroPad(minutes)}:{zeroPad(seconds)}</h3>
+               <h3 className="timer--count">{hours > 0 && `${hours}:`}{zeroPad(minutes)}:{zeroPad(seconds)}</h3>
                <button className="timer--set">Set</button>
             </div>
-            <TimerHandlers/>
+            <TimerHandlers />
          </div>
       )
 
