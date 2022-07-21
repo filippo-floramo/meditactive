@@ -12,6 +12,8 @@ export function ContextProvider({ children }) {
 
    const [isStarted, setIsStarted] = useState(false);
 
+   const [showModal, setShowModal] = useState(false);
+
    
    const countdown = useRef(null);
 
@@ -48,6 +50,8 @@ export function ContextProvider({ children }) {
          setTimerCount,
          isStarted,
          setIsStarted,
+         showModal,
+         setShowModal
 
       }}>
          {children}
