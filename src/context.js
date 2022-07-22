@@ -12,9 +12,13 @@ export function ContextProvider({ children }) {
 
    const [isStarted, setIsStarted] = useState(false);
 
-   const [showModal, setShowModal] = useState(false);
+   const [showModal, setShowModal] = useState(true);
 
-   
+   const [apiActivity, setApiActivity] = useState("");
+
+   const [showActivity, setShowActivity] = useState(false);
+
+
    const countdown = useRef(null);
 
 
@@ -37,6 +41,24 @@ export function ContextProvider({ children }) {
 
 
 
+   async function getBoredAPI() {
+
+      const axios = require("axios");
+
+      try {
+         const response = await axios.get('https://www.boredapi.com/api/activity?type=relaxation&maxaccessibility=0.7')
+         const data = await response.data.activity;
+
+         setApiActivity(data);
+         setShowActivity(true);
+         console.log(apiActivity);
+
+      } catch (error) {
+         console.error(error);
+      }
+
+   }
+
 
 
 
@@ -51,7 +73,12 @@ export function ContextProvider({ children }) {
          isStarted,
          setIsStarted,
          showModal,
-         setShowModal
+         setShowModal,
+         getBoredAPI,
+         apiActivity,
+         showActivity,
+         setShowActivity,
+
 
       }}>
          {children}

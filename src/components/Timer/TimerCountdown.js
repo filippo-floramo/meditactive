@@ -6,7 +6,7 @@ import { useContext } from "react";
 
 export default function TimerCountdown() {
 
-   const { countdown, timerCount, setIsStarted } = useContext(Context);
+   const { countdown, timerCount, setIsStarted, setShowModal } = useContext(Context);
 
    console.log("rirenderizzato");
 
@@ -26,9 +26,9 @@ export default function TimerCountdown() {
          renderer={renderer}
          autoStart={false}
          ref={countdown}
-         controlled={false}
          onStart={() => setIsStarted(true)}
          onStop={() => setIsStarted(false)}
+         onComplete={() => {setIsStarted(false); setShowModal(true)}}
 
       />
    )
