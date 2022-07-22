@@ -10,6 +10,11 @@ export default function TimerCountdown() {
 
    console.log("rirenderizzato");
 
+   const timerComplete = () => {
+      setIsStarted(false);
+      timerCount > 0 && setShowModal(true);
+   }
+
    const renderer = ({ minutes, seconds, hours }) => {
 
       return (
@@ -28,7 +33,7 @@ export default function TimerCountdown() {
          ref={countdown}
          onStart={() => setIsStarted(true)}
          onStop={() => setIsStarted(false)}
-         onComplete={() => {setIsStarted(false); setShowModal(true)}}
+         onComplete={() => {timerComplete()}}
 
       />
    )

@@ -11,7 +11,8 @@ import Context from "../../context";
 
 export default function TimerButtons(props) {
 
-   const { setTimerCount } = useContext(Context);
+   const { setTimerCount, isStarted } = useContext(Context);
+
 
    const updateTimer = (countValue) => {
 
@@ -39,9 +40,16 @@ export default function TimerButtons(props) {
    };
 
    return (
-      <div className={props.type}>
-         <button className="buttons" onClick={() => updateTimer(props.minutesValue)}>{props.minutes}</button>
-         <button className="buttons" onClick={() => updateTimer(props.secondsValue)}>{props.seconds}</button>
-      </div>
+      <>
+         {
+            isStarted === false &&
+            (
+               <div className={props.type}>
+                  <button className="buttons" onClick={() => updateTimer(props.minutesValue)}>{props.minutes}</button>
+                  <button className="buttons" onClick={() => updateTimer(props.secondsValue)}>{props.seconds}</button>
+               </div>
+            )
+         }
+      </>
    );
 }
