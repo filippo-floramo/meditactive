@@ -19,7 +19,7 @@ export default function TimerButtons(props) {
       switch (props.type) {
 
          case "increment":
-            setTimerCount(prevState => prevState += countValue);
+            setTimerCount(prevState => prevState + countValue);
             break;
 
          case "decrement":
@@ -27,7 +27,7 @@ export default function TimerButtons(props) {
                let delta = prevState - countValue;
 
                if (delta > 0) {
-                  return prevState -= countValue;
+                  return prevState - countValue;
                } else {
                   return prevState = 0;
                }
