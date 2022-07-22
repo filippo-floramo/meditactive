@@ -1,18 +1,16 @@
 import React from "react";
-import TimerDisplay from "../components/Timer/TimerDisplay";
-import TimerWaves from "../components/Timer/TimerWaves";
+import TimerIndex from "../components/Timer/TimerIndex";
+import Waves from "../components/Waves";
 import Modal from "../components/Modal";
 
 
 
 export default function Meditate() {
    return (
-      <>
+      <main>
          <Modal />
-         <main className="timer--container">
-            <TimerDisplay />
-            <TimerWaves />
-         </main>
-      </>
+         <TimerIndex />
+         <Waves />
+      </main>
    )
 }

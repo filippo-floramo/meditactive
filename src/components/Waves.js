@@ -3,11 +3,11 @@ import Wave from "react-wavify";
 
 
 
-export default function TimerWaves() {
+export default function Waves() {
    return (
       <div className="wave--container">
          <Wave
-            className="wave"
+            className="wave--one"
             fill="url(#a)"
             options={
                {
@@ -23,7 +23,7 @@ export default function TimerWaves() {
             </defs>
          </Wave>
          <Wave
-            className="wave2"
+            className="wave--two"
             fill="url(#a)"
             options={
                {

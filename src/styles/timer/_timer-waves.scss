@@ -1,14 +1,18 @@
-
 .wave--container {
    width: 100%;
+   position: absolute;
+   bottom: 0;
+   
+   overflow: hidden;
 }
-.wave {
+
+.wave--one {
    position: relative;
    width: 100%;
    bottom: -5px;
 }
 
-.wave2 {
+.wave--two {
    position: absolute;
    left: 0;
 
