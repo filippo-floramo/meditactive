@@ -1,11 +1,27 @@
 import React from "react";
 import Wave from "react-wavify";
+import { motion } from "framer-motion";
 
 
+const waveVariants = {
+   hidden: { opacity: 0 },
+   visible: {
+      opacity: 1 ,
+      transition: {
+         opacity: { duration: 20 }
+      }
+   },
+}
 
 export default function Waves() {
+
+
+
    return (
-      <div className="wave--container">
+      <motion.div className="wave--container"
+         variants={waveVariants}
+         animate="visible"
+         initial="hidden">
          <Wave
             className="wave--one"
             fill="url(#a)"
@@ -39,7 +55,7 @@ export default function Waves() {
             </defs>
          </Wave>
 
-      </div>
+      </motion.div>
 
    )
 }

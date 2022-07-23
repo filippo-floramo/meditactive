@@ -1,4 +1,4 @@
-import { createContext, useState, useRef } from "react";
+import { createContext, useState, useRef, useEffect, useMemo } from "react";
 
 
 
@@ -40,6 +40,40 @@ export function ContextProvider({ children }) {
    }
 
 
+   const useAudio = url => {
+      const [audio] = useState(new Audio(url));
+      const [playing, setPlaying] = useState(false);
+
+      const toggle = () => setPlaying(!playing);
+
+
+      useEffect(() => {
+         playing ? audio.play() : audio.pause();
+      },
+         [playing]
+      );
+
+      useEffect(() => {
+         audio.addEventListener('ended', () => setPlaying(false));
+         return () => {
+            audio.removeEventListener('ended', () => setPlaying(false));
+         };
+      }, []);
+
+      return [toggle, playing];
+   };
+
+
+
+
+
+
+
+
+
+
+
+
 
    async function getBoredAPI() {
 
@@ -78,6 +112,7 @@ export function ContextProvider({ children }) {
          apiActivity,
          showActivity,
          setShowActivity,
+         useAudio
 
 
       }}>

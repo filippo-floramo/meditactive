@@ -1,9 +1,17 @@
 import React from "react";
 import { useContext } from "react";
 import Context from "../../context";
+import { motion } from "framer-motion"
 
 
-
+const buttonVariants = {
+   hover: {
+      scale: 1.2,
+      transition: {
+         scale: { duration: 0.2 }
+      }
+   },
+}
 
 
 
@@ -45,8 +53,18 @@ export default function TimerButtons(props) {
             isStarted === false &&
             (
                <div className={props.type}>
-                  <button className="buttons" onClick={() => updateTimer(props.minutesValue)}>{props.minutes}</button>
-                  <button className="buttons" onClick={() => updateTimer(props.secondsValue)}>{props.seconds}</button>
+                  <motion.button className="buttons" onClick={() => updateTimer(props.minutesValue)}
+                     variants={buttonVariants}
+                     whileHover="hover"
+                  >
+                     {props.minutes}
+                  </motion.button>
+                  <motion.button className="buttons" onClick={() => updateTimer(props.secondsValue)}
+                     variants={buttonVariants}
+                     whileHover="hover"
+                  >
+                     {props.seconds}
+                  </motion.button>
                </div>
             )
          }

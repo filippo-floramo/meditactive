@@ -8,9 +8,9 @@ import Modal from "../components/Modal";
 export default function Meditate() {
    return (
       <main>
-         <Modal />
+         <Modal />  
          <TimerIndex />
-         <Waves />
+         <Waves />        
       </main>
    )
 }
