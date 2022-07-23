@@ -1,4 +1,4 @@
-import { createContext, useState, useRef, useEffect, useMemo } from "react";
+import { createContext, useState, useRef, useEffect} from "react";
 
 
 
@@ -49,15 +49,16 @@ export function ContextProvider({ children }) {
 
       useEffect(() => {
          playing ? audio.play() : audio.pause();
-      },
-         [playing]
-      );
+
+         // eslint-disable-next-line react-hooks/exhaustive-deps
+      },[playing]);
 
       useEffect(() => {
          audio.addEventListener('ended', () => setPlaying(false));
          return () => {
             audio.removeEventListener('ended', () => setPlaying(false));
          };
+         // eslint-disable-next-line react-hooks/exhaustive-deps
       }, []);
 
       return [toggle, playing];
