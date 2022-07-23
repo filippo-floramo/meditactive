@@ -1,4 +1,4 @@
-import { createContext, useState, useRef, useEffect} from "react";
+import { createContext, useState, useRef, useEffect } from "react";
 
 
 
@@ -14,9 +14,9 @@ export function ContextProvider({ children }) {
 
    const [showModal, setShowModal] = useState(true);
 
-   const [apiActivity, setApiActivity] = useState("");
+   const [apiQuote, setApiQuote] = useState("");
 
-   const [showActivity, setShowActivity] = useState(false);
+   const [showQuote, setShowQuote] = useState(false);
 
 
    const countdown = useRef(null);
@@ -46,54 +46,36 @@ export function ContextProvider({ children }) {
 
       const toggle = () => setPlaying(!playing);
 
-
       useEffect(() => {
          playing ? audio.play() : audio.pause();
 
-         // eslint-disable-next-line react-hooks/exhaustive-deps
-      },[playing]);
+      }, [playing, audio]);
 
       useEffect(() => {
          audio.addEventListener('ended', () => setPlaying(false));
          return () => {
             audio.removeEventListener('ended', () => setPlaying(false));
          };
-         // eslint-disable-next-line react-hooks/exhaustive-deps
-      }, []);
+      }, [audio]);
 
       return [toggle, playing];
    };
 
 
-
-
-
-
-
-
-
-
-
-
-
-   async function getBoredAPI() {
+   useEffect(() => {
 
       const axios = require("axios");
 
-      try {
-         const response = await axios.get('https://www.boredapi.com/api/activity?type=relaxation&maxaccessibility=0.7')
-         const data = await response.data.activity;
+      axios.get("https://api.quotable.io/random?tags=wisdom,famous-quotes")
+         .then(response => {
+            const data = response.data.content;
+            setApiQuote(data);
+            setShowQuote(true);
+            console.log(response);
+         })
+         .catch(err => console.error(err));
 
-         setApiActivity(data);
-         setShowActivity(true);
-         console.log(apiActivity);
-
-      } catch (error) {
-         console.error(error);
-      }
-
-   }
-
+   }, []);
 
 
 
@@ -109,13 +91,10 @@ export function ContextProvider({ children }) {
          setIsStarted,
          showModal,
          setShowModal,
-         getBoredAPI,
-         apiActivity,
-         showActivity,
-         setShowActivity,
+         apiQuote,
+         showQuote,
+         setShowQuote,
          useAudio
-
-
       }}>
          {children}
       </Context.Provider>
