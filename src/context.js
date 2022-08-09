@@ -12,7 +12,7 @@ export function ContextProvider({ children }) {
 
    const [isStarted, setIsStarted] = useState(false);
 
-   const [showModal, setShowModal] = useState(true);
+   const [showModal, setShowModal] = useState(false);
 
    const [apiQuote, setApiQuote] = useState("");
 
@@ -44,21 +44,17 @@ export function ContextProvider({ children }) {
       const [audio] = useState(new Audio(url));
       const [playing, setPlaying] = useState(false);
 
-      const toggle = () => setPlaying(!playing);
+      const playSound = () => setPlaying(true);
+      const pauseSound = () => setPlaying(false);
+      const clearSound = () => {setPlaying(false); audio.currentTime = 0};
 
       useEffect(() => {
+         audio.loop = true;
          playing ? audio.play() : audio.pause();
 
       }, [playing, audio]);
 
-      useEffect(() => {
-         audio.addEventListener('ended', () => setPlaying(false));
-         return () => {
-            audio.removeEventListener('ended', () => setPlaying(false));
-         };
-      }, [audio]);
-
-      return [toggle, playing];
+      return [playSound, pauseSound, clearSound, playing];
    };
 
 

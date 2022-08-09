@@ -1,7 +1,6 @@
 import React from "react";
 import { useContext } from "react";
 import Context from "../../context";
-import sound from "../../sounds/shitreal.mp3"
 
 
 
@@ -9,11 +8,7 @@ import sound from "../../sounds/shitreal.mp3"
 export default function TimerHandlers() {
 
 
-   const { countdown, timerCount, isStarted, setTimerCount, useAudio } = useContext(Context);
-   const [toggle] = useAudio(sound);
-
-
-
+   const { countdown, timerCount, isStarted, setTimerCount } = useContext(Context);
 
 
 
@@ -21,7 +16,7 @@ export default function TimerHandlers() {
 
       <div className="time--handlers">
          <button className="handler pause" onClick={() => { countdown.current.pause() }}>Pause</button>
-         <button className="handler play" onClick={() => { timerCount > 0 && countdown.current.start(); toggle() }}>Start</button>
+         <button className="handler play" onClick={() => { if (timerCount > 0) { countdown.current.start() } }}>Start</button>
          {
             isStarted ?
                <button className="handler stop" onClick={() => { countdown.current.stop() }}>Stop</button>
