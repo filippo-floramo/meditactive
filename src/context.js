@@ -1,3 +1,4 @@
+
 import { createContext, useState, useRef, useEffect } from "react";
 
 
@@ -8,7 +9,7 @@ export function ContextProvider({ children }) {
 
    const [isSleep, setIsSleep] = useState(false);
 
-   const [timerCount, setTimerCount] = useState(0);
+   const [timerCount, setTimerCount] = useState(6000);
 
    const [isStarted, setIsStarted] = useState(false);
 
@@ -46,7 +47,11 @@ export function ContextProvider({ children }) {
 
       const playSound = () => setPlaying(true);
       const pauseSound = () => setPlaying(false);
-      const clearSound = () => {setPlaying(false); audio.currentTime = 0};
+      const clearSound = () => { setPlaying(false); audio.currentTime = 0 };
+
+      useEffect(() => {
+         if (showModal) { clearSound() };
+      })
 
       useEffect(() => {
          audio.loop = true;
