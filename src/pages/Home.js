@@ -1,12 +1,23 @@
 import React from "react";
 import Card from "../components/Card";
-import { useContext } from "react";
-import Context from "../context";
+//import { useContext } from "react";
+// import Context from "../context";
+import darkIcon from "../img/dark-mode.svg";
+import lightIcon from "../img/light-mode.svg"
 
 
 export default function Home() {
 
-   const { cardData } = useContext(Context);
+   const cardData = [
+      {
+         icon: lightIcon,
+         type: "Chill"
+      },
+      {
+         icon: darkIcon,
+         type: "Sleep"
+      },
+   ];
 
 
    const cards = cardData.map((item) => {
