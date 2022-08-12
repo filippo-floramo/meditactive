@@ -1,8 +1,16 @@
-
-
 .card {
-   margin: 0 20px;
-    height: 250px ;
+    margin-inline: 20px;
+    margin-top: 20px;
+    padding: 10px;
+
+    height: 250px;
     width: 208px;
+    border-radius: 13px;
     background-color: white;
+
+    &--type {
+        text-align: center;
+        margin-top: 18px;
+        color: black;
+    }
 }

@@ -14,8 +14,14 @@
    align-items: center;
 
 
+   &--welcome {
+      margin-top: 60px;
+      color: greenyellow;
+   }
+
+
    &--cards {
-      margin-top: 200px;
+      margin-top: 140px;
       display: flex;
       flex-direction: row;
    }

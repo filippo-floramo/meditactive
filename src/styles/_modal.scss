@@ -14,11 +14,38 @@
    z-index: 1;
 
    .modal {
-      max-width: 400px;
+      max-width: 500px;
       margin: 0 auto;
       padding: 40px 20px;
       background: white;
       border-radius: 10px;
       text-align: center;
+
+      h2 {
+         font-size: 1.8rem;
+      }
+
+      &--activity {
+         padding: 10px;
+         font-size: 1.4rem;
+         margin-top: 40px;
+
+   
+         border-top: 2px solid black ;
+         border-bottom: 2px solid black;
+      }
+
+      &--close--button {
+         margin-top: 30px;
+         
+         width: 100px;
+         height: 40px;
+
+         border-radius: 20px;
+         border: none;
+         background-color: blue;
+         color: white;
+         cursor: pointer;
+      }
    }
 }

@@ -19,8 +19,8 @@ export default function Card(props) {
    return (
       <Link to="/meditate" className="route--link">
          <div onClick={() => chill(props.data.type)} className="card" style={style}>
-            <img src={props.data.icon} alt="type fo meditation" />
-            <h1>{props.data.type}</h1>
+            <img className="card--img" src={props.data.icon} alt="Deep or Light meditation" />
+            <h1 className="card--type">{props.data.type}</h1>
          </div>
       </Link>
    )

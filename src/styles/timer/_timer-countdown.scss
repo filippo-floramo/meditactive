@@ -1,17 +1,20 @@
 .timer {
 
    position: relative;
+   margin-bottom: 40px;
    width: 250px;
    height: 250px;
-   border: 1px solid red;
+   //border: 1px solid red;
+   background-color: rgba(255, 255, 255, 0.168);
    border-radius: 50%;
 
    &--count {
+      font-size: 4rem;
+      font-weight: 500;
       position: absolute;
       top: 50%;
       left: 50%;
       transform: translateX(-50%) translateY(-50%);
-
    }
 
 }

@@ -23,17 +23,6 @@ export function ContextProvider({ children }) {
    const countdown = useRef(null);
 
 
-   const cardData = [
-      {
-         icon: "lol",
-         type: "Chill"
-      },
-      {
-         icon: "lel",
-         type: "Sleep"
-      },
-   ];
-
    function chill(item) {
       if (item === "Sleep") {
          setIsSleep(true);
@@ -82,7 +71,6 @@ export function ContextProvider({ children }) {
 
    return (
       <Context.Provider value={{
-         cardData,
          chill,
          isSleep,
          countdown,
