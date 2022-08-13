@@ -1,10 +1,10 @@
-import Navbar from "./components/Navbar";
+ // import Navbar from "./components/Navbar";
 import Home from "./pages/Home"
 import Meditate from "./pages/Meditate";
 import { ContextProvider } from "./context";
 import { Routes, Route, useLocation } from "react-router-dom";
-import './styles/App.scss';
 import { AnimatePresence } from "framer-motion"
+import './styles/App.scss';
 
 function App() {
 
@@ -13,7 +13,6 @@ function App() {
   return (
     <>
       <ContextProvider>
-        <Navbar />
         <AnimatePresence exitBeforeEnter>
           <Routes location={location} key={location.key}>
             <Route path="/" element={<Home />} />

@@ -3,6 +3,7 @@ import Card from "../components/Card";
 import { motion } from "framer-motion";
 import darkIcon from "../img/dark-mode.svg";
 import lightIcon from "../img/light-mode.svg"
+import Navbar from "../components/Navbar";
 
 const homeVariants = {
 
@@ -52,6 +53,8 @@ export default function Home() {
          animate="visible"
          exit="exit"
       >
+       <Navbar id="home" />
+
 
             <h1 className="landing--welcome">Hey, how do you wan to feel right now? </h1>
 

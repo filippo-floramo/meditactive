@@ -4,12 +4,13 @@
    height: 70px;
    background-color: aquamarine;
    z-index: 2;
+   color: white;
 
    &--link {
       color: white;
       display: block;
       height: 100%;
-      width: 200px;
+      width: 80px;
       margin: 0 auto;
    }
 
@@ -24,6 +25,10 @@
       .logo {
          height: 80%;
          padding-right: 12px;
+      }
+
+      .alt-logo {
+         padding: 0;
       }
    }
 }
