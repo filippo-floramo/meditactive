@@ -2,6 +2,16 @@ import React from "react";
 import { useContext } from "react";
 import Context from "../context";
 import { Link } from "react-router-dom";
+import { motion } from "framer-motion"
+
+const cardVariants = {
+   exit: {
+      scale: 0.1,
+      transition: {
+         scale: {duration: 2}
+      }
+   }
+}
 
 
 
@@ -18,10 +28,13 @@ export default function Card(props) {
 
    return (
       <Link to="/meditate" className="route--link">
-         <div onClick={() => chill(props.data.type)} className="card" style={style}>
+         <motion.div
+         variants={cardVariants}
+         exit="exit"
+          onClick={() => chill(props.data.type)} className="card" style={style}>
             <img className="card--img" src={props.data.icon} alt="Deep or Light meditation" />
             <h1 className="card--type">{props.data.type}</h1>
-         </div>
+         </motion.div>
       </Link>
    )
 }
