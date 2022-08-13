@@ -1,17 +1,25 @@
 import React from "react";
 import Card from "../components/Card";
 import { motion } from "framer-motion";
-//import { useContext } from "react";
-// import Context from "../context";
 import darkIcon from "../img/dark-mode.svg";
 import lightIcon from "../img/light-mode.svg"
 
 const homeVariants = {
+
+   hidden: { opacity: 0.3 },
+
+   visible: {
+      opacity: 1,
+      transition: {
+         opacity: { duration: 1 },
+      }
+   },
+
    exit: {
       opacity: 0.05,
 
       transition: {
-         opacity: {duration: 2}
+         opacity: { duration: 2 }
       }
    }
 }
@@ -40,13 +48,15 @@ export default function Home() {
    return (
       <motion.main className="landing"
          variants={homeVariants}
+         initial="hidden"
+         animate="visible"
          exit="exit"
-         >
+      >
 
-         <h1 className="landing--welcome">Hey, how do you wan to feel right now? </h1>
+            <h1 className="landing--welcome">Hey, how do you wan to feel right now? </h1>
 
-         <section className="landing--cards">
-            {cards}
+            <section className="landing--cards">
+               {cards}
          </section>
       </motion.main>
    )
