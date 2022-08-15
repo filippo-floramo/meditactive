@@ -53,13 +53,11 @@ export default function Home() {
          animate="visible"
          exit="exit"
       >
-       <Navbar id="home" />
+         <Navbar id="home" />
 
-
-            <h1 className="landing--welcome">Hey, how do you wan to feel right now? </h1>
-
-            <section className="landing--cards">
-               {cards}
+         <h1 className="landing--welcome">Hey, how do you wan to feel right now? </h1>
+         <section className="landing--cards">
+            {cards}
          </section>
       </motion.main>
    )

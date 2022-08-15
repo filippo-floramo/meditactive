@@ -18,7 +18,7 @@ export default function TimerHandlers() {
 
       <div className="time--handlers">
          <button className="handler pause" onClick={() => { countdown.current.pause(); pauseSound() }}>Pause</button>
-         <button className="handler play" onClick={() => { if (timerCount > 0) { countdown.current.start(); playSound() } }}>Start</button>
+         <button className="handler play" onClick={() => { if (timerCount > 0) { countdown.current.start(); playSound() } }}>Play</button>
          {
             isStarted ?
                <button className="handler stop" onClick={() => { countdown.current.stop(); clearSound() }}>Stop</button>

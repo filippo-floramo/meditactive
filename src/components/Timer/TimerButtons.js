@@ -21,7 +21,6 @@ export default function TimerButtons(props) {
 
    const { setTimerCount, isStarted } = useContext(Context);
 
-
    const updateTimer = (countValue) => {
 
       switch (props.type) {
@@ -35,7 +34,7 @@ export default function TimerButtons(props) {
                let delta = prevState - countValue;
 
                if (delta > 0) {
-                  return prevState - countValue;
+                  return delta;
                } else {
                   return prevState = 0;
                }

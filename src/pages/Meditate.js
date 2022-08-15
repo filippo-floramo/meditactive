@@ -2,7 +2,7 @@ import React from "react";
 import TimerIndex from "../components/Timer/TimerIndex";
 import Waves from "../components/Waves";
 import Modal from "../components/Modal";
-import {motion} from "framer-motion";
+import { motion } from "framer-motion";
 import Navbar from "../components/Navbar";
 
 const meditateVariants = {
@@ -10,7 +10,7 @@ const meditateVariants = {
    visible: {
       opacity: 1,
       transition: {
-         opacity: {duration: 1}
+         opacity: { duration: 1 }
       }
    }
 
@@ -23,12 +23,11 @@ export default function Meditate() {
          variants={meditateVariants}
          initial="hidden"
          animate="visible"
-         >
+      >
          <Navbar id="meditate" />
-
-         <Modal />  
+         <Modal />
          <TimerIndex />
-         <Waves />        
+         <Waves />
       </motion.main>
    )
 }

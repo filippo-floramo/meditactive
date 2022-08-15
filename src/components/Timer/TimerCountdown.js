@@ -8,7 +8,7 @@ import { useContext } from "react";
 export default function TimerCountdown() {
 
    const { countdown, timerCount, setIsStarted, setShowModal } = useContext(Context);
-   
+
 
 
 
@@ -35,9 +35,9 @@ export default function TimerCountdown() {
          renderer={renderer}
          autoStart={false}
          ref={countdown}
-         onStart={() => { setIsStarted(true);}}
-         onStop={() => { setIsStarted(false);}}
-         onComplete={() => { timerComplete();}}
+         onStart={() => { setIsStarted(true) }}
+         onStop={() => { setIsStarted(false) }}
+         onComplete={() => { timerComplete() }}
 
       />
    )
