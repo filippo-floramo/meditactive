@@ -1,25 +1,33 @@
 import React from "react";
 import { useContext } from "react";
 import Context from "../../context";
-import { motion } from "framer-motion"
+import { AnimatePresence, motion } from "framer-motion"
 
-
-const buttonVariants = {
-   hover: {
-      scale: 1.2,
-      transition: {
-         scale: { duration: 0.2 }
-      }
-   },
-}
 
 
 
 
 
 export default function TimerButtons(props) {
-
+   
    const { setTimerCount, isStarted } = useContext(Context);
+
+   const buttonVariants = {
+      hover: {
+         scale: 1.2,
+         transition: {
+            scale: { duration: 0.2 }
+         }
+      },
+
+      exit: {
+         scale: 0,
+         transition: {
+            scale: { duration: 0.2 }
+         }
+      }
+   }
+
 
    const updateTimer = (countValue) => {
 
@@ -48,25 +56,31 @@ export default function TimerButtons(props) {
 
    return (
       <>
-         {
-            isStarted === false &&
-            (
-               <div className={props.type}>
-                  <motion.button className="buttons" onClick={() => updateTimer(props.minutesValue)}
-                     variants={buttonVariants}
-                     whileHover="hover"
-                  >
-                     {props.minutes}
-                  </motion.button>
-                  <motion.button className="buttons" onClick={() => updateTimer(props.secondsValue)}
-                     variants={buttonVariants}
-                     whileHover="hover"
-                  >
-                     {props.seconds}
-                  </motion.button>
-               </div>
-            )
-         }
+         <AnimatePresence>
+            {
+               isStarted === false &&
+               (
+                  <div className={props.type}>
+                     <motion.button className="buttons" onClick={() => updateTimer(props.minutesValue)}
+                        variants={buttonVariants}
+                        key="minute"
+                        whileHover="hover"
+                        exit="exit"
+                     >
+                        {props.minutes}
+                     </motion.button>
+                     <motion.button className="buttons" onClick={() => updateTimer(props.secondsValue)}
+                        variants={buttonVariants}
+                        key="second"
+                        whileHover="hover"
+                        exit="exit"
+                     >
+                        {props.seconds}
+                     </motion.button>
+                  </div>
+               )
+            }
+         </AnimatePresence>
       </>
    );
 }

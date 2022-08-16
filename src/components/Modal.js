@@ -1,5 +1,6 @@
 import React, { useContext } from "react";
 import Context from "../context";
+import { motion } from "framer-motion";       
 
 
 
@@ -11,17 +12,42 @@ export default function Modal() {
    const { showQuote, apiQuote,  showModal, setShowModal } = useContext(Context);
 
 
+   const modalVariants = {
+      hidden: {
+         y: -300
+      },
+      visible: {
+         y: 10,
+         transition: {
+            y: {
+               type: "spring",
+               mass: 1.5,
+               stiffness: 80
+             }
+         }
+      },
+
+
+      
+   }
+
+
    return (
       <>
          {
             showModal &&
             (
                <div className="backdrop">
-                  <div className="modal">
+                  <motion.div 
+                  className="modal"
+                  variants={modalVariants}
+                  initial="hidden"
+                  animate="visible"
+                  >
                      <h2>Congratulations! <br/> find what else you can do to fell better</h2>  
                      {showQuote && <p className="modal--activity">{apiQuote}</p>}
                      <button className="modal--close--button" onClick={() => { setShowModal(false) }}>Close</button>
-                  </div>
+                  </motion.div>
                </div>
             )
          }

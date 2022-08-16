@@ -4,26 +4,26 @@ import Context from "../context";
 import { Link } from "react-router-dom";
 import { motion } from "framer-motion"
 
-const cardVariants = {
-   hidden: { opacity: 0 },
-   visible: {
-      opacity: 1,
-      transition: {
-         delay: 1,
-         opacity: { duration: 1.5 }
-      }
-   },
-   exit: {
-      scale: 0.1,
-      transition: {
-         scale: { duration: 2 }
-      }
-   }
-}
 
 
 
 export default function Card(props) {
+   const cardVariants = {
+      hidden: { opacity: 0 },
+      visible: {
+         opacity: 1,
+         transition: {
+            delay: 1,
+            opacity: { duration: 1.5 }
+         }
+      },
+      exit: {
+         scale: 0.1,
+         transition: {
+            scale: { duration: 2 }
+         }
+      }
+   }
 
    const { chill, isSleep } = useContext(Context);
 

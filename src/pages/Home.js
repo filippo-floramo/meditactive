@@ -5,29 +5,29 @@ import darkIcon from "../img/dark-mode.svg";
 import lightIcon from "../img/light-mode.svg"
 import Navbar from "../components/Navbar";
 
-const homeVariants = {
-
-   hidden: { opacity: 0.3 },
-
-   visible: {
-      opacity: 1,
-      transition: {
-         opacity: { duration: 1 },
-      }
-   },
-
-   exit: {
-      opacity: 0.05,
-
-      transition: {
-         opacity: { duration: 2 }
-      }
-   }
-}
 
 
 export default function Home() {
-
+   
+   const homeVariants = {
+   
+      hidden: { opacity: 0.3 },
+   
+      visible: {
+         opacity: 1,
+         transition: {
+            opacity: { duration: 1 },
+         }
+      },
+   
+      exit: {
+         opacity: 0.05,
+   
+         transition: {
+            opacity: { duration: 2 }
+         }
+      }
+   }
    const cardData = [
       {
          icon: lightIcon,

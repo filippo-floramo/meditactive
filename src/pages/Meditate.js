@@ -5,19 +5,19 @@ import Modal from "../components/Modal";
 import { motion } from "framer-motion";
 import Navbar from "../components/Navbar";
 
-const meditateVariants = {
-   hidden: { opacity: 0.2 },
-   visible: {
-      opacity: 1,
-      transition: {
-         opacity: { duration: 1 }
-      }
-   }
-
-}
 
 
 export default function Meditate() {
+   const meditateVariants = {
+      hidden: { opacity: 0.2 },
+      visible: {
+         opacity: 1,
+         transition: {
+            opacity: { duration: 1 }
+         }
+      }
+   
+   }
    return (
       <motion.main
          variants={meditateVariants}
