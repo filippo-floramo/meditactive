@@ -25,11 +25,7 @@ export default function Card(props) {
       }
    }
 
-   const { chill, isSleep } = useContext(Context);
-
-   const style = {
-      backgroundColor: isSleep ? "red" : "white"
-   };
+   const { pickMode } = useContext(Context);
 
 
 
@@ -41,9 +37,8 @@ export default function Card(props) {
             initial="hidden"
             animate="visible"
             exit="exit"
-            onClick={() => chill(props.data.type)}
+            onClick={() => pickMode(props.data.type)}
             className="card"
-            style={style}
          >
             <img className="card--img" src={props.data.icon} alt="Deep or Light meditation" />
             <h1 className="card--type">{props.data.type}</h1>

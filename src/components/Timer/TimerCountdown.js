@@ -7,7 +7,11 @@ import { useContext } from "react";
 
 export default function TimerCountdown() {
 
-   const { countdown, timerCount, setIsStarted, setShowModal } = useContext(Context);
+   const { countdown, timerCount, setIsStarted, setShowModal, isDark } = useContext(Context);
+
+   const style = {
+      color: isDark ? "#07ff8b" : "#001b87",
+   }
 
 
 
@@ -22,7 +26,7 @@ export default function TimerCountdown() {
    const renderer = ({ minutes, seconds, hours }) => {
 
       return (
-         <div className="timer">
+         <div className="timer" style={style}>
             <h3 className="timer--count">{hours > 0 && `${hours}:`}{zeroPad(minutes)}:{zeroPad(seconds)}</h3>
          </div>
       )

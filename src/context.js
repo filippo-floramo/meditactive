@@ -7,7 +7,7 @@ const Context = createContext();
 
 export function ContextProvider({ children }) {
 
-   const [isSleep, setIsSleep] = useState(false);
+   const [isDark, setIsDark] = useState(false);
 
    const [timerCount, setTimerCount] = useState(6000);
 
@@ -23,9 +23,11 @@ export function ContextProvider({ children }) {
    const countdown = useRef(null);
 
 
-   function chill(item) {
+   function pickMode(item) {
       if (item === "Sleep") {
-         setIsSleep(true);
+         setIsDark(true);
+      } else {
+         setIsDark(false)
       }
    }
 
@@ -48,7 +50,7 @@ export function ContextProvider({ children }) {
 
       }, [playing, audio]);
 
-      return [playSound, pauseSound, clearSound, playing];
+      return [playSound, pauseSound, clearSound];
    };
 
 
@@ -71,8 +73,8 @@ export function ContextProvider({ children }) {
 
    return (
       <Context.Provider value={{
-         chill,
-         isSleep,
+         pickMode,
+         isDark,
          countdown,
          timerCount,
          setTimerCount,

@@ -11,6 +11,7 @@
    display: flex;
    flex-direction: column;
    align-items: center;
+  // background-image: linear-gradient(to right, #009ffd, #2480db, #2d62b8, #2e4595, #2a2a72);
    
    
    &--sections {
@@ -32,5 +33,16 @@
          align-items: center;
          justify-content: space-around;
       }
+   }
+}
+
+@keyframes bg-animation {
+
+   0% {
+      background-position: left ;
+   }
+
+   100%{
+      background-position: right ;
    }
 }
