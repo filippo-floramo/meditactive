@@ -1,13 +1,12 @@
 import React, { useContext } from "react";
 import { Link } from "react-router-dom";
+import { motion } from "framer-motion";
 import Context from "../context";
 import logo from "../img/logo.svg";
-import { motion } from "framer-motion";
 
 export default function Navbar({ id }) {
 
    const { isDark } = useContext(Context);
-
 
    const navbarVariants = {
       visible: {

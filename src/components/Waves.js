@@ -1,7 +1,7 @@
 import React, { useContext } from "react";
-import Wave from "react-wavify";
 import { motion } from "framer-motion";
 import Context from "../context";
+import Wave from "react-wavify";
 
 
 export default function Waves() {
@@ -19,13 +19,12 @@ export default function Waves() {
       },
    }
 
-
    return (
 
       isStarted &&
-
       (
-         <motion.div className="wave--container"
+         <motion.div
+            className="wave--container"
             variants={waveVariants}
             animate="visible"
             initial="hidden">
@@ -61,9 +60,7 @@ export default function Waves() {
                   </linearGradient>
                </defs>
             </Wave>
-
          </motion.div>
       )
-
    )
 }

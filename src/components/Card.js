@@ -8,6 +8,9 @@ import { motion } from "framer-motion"
 
 
 export default function Card(props) {
+
+   const { pickMode } = useContext(Context);
+
    const cardVariants = {
       hidden: { opacity: 0 },
       visible: {
@@ -24,11 +27,6 @@ export default function Card(props) {
          }
       }
    }
-
-   const { pickMode } = useContext(Context);
-
-
-
 
    return (
       <Link to="/meditate" className="route--link">

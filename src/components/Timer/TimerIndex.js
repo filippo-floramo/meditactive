@@ -1,8 +1,8 @@
 import React, { useContext } from "react";
+import Context from "../../context";
 import TimerCountdown from "./TimerCountdown";
 import TimerHandlers from "./TimerHandlers";
 import TimerButtons from "./TimerButtons";
-import Context from "../../context";
 
 
 
@@ -20,7 +20,6 @@ export default function TimerIndex() {
       backgroundSize: "400%",
       animation: isStarted && "bg-animation 15s infinite alternate"
    }
-
 
    return (
       <section className="timer--container" style={style}>

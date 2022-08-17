@@ -1,9 +1,8 @@
- // import Navbar from "./components/Navbar";
-import Home from "./pages/Home"
-import Meditate from "./pages/Meditate";
 import { ContextProvider } from "./context";
 import { Routes, Route, useLocation } from "react-router-dom";
 import { AnimatePresence } from "framer-motion"
+import Home from "./pages/Home"
+import Meditate from "./pages/Meditate";
 import './styles/App.scss';
 
 function App() {

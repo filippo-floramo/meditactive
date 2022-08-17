@@ -20,17 +20,10 @@ export function ContextProvider({ children }) {
 
    const [showQuote, setShowQuote] = useState(false);
 
-
    const countdown = useRef(null);
 
-   function pickMode(item) {
-      if (item === "Deep") {
-         setIsDark(true);
-      } else {
-         setIsDark(false)
-      }
-   }
 
+   /*Create custom Hook to use Audio tracks */
 
    const useAudio = url => {
       const [audio] = useState(new Audio(url));
@@ -56,10 +49,26 @@ export function ContextProvider({ children }) {
       return [playSound, pauseSound, clearSound];
    };
 
+
+   /*Set mode */
+
+   function pickMode(item) {
+      if (item === "Deep") {
+         setIsDark(true);
+      } else {
+         setIsDark(false)
+      }
+   }
+
+
+   /*Store mode */
+
    useEffect(() => {
       localStorage.setItem("dark-mode", isDark)
    }, [isDark]);
 
+
+   /*Api call for Modal */
 
    useEffect(() => {
 

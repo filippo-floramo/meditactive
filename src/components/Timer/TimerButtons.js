@@ -7,9 +7,8 @@ import { AnimatePresence, motion } from "framer-motion"
 
 
 
-
 export default function TimerButtons(props) {
-   
+
    const { setTimerCount, isStarted } = useContext(Context);
 
    const buttonVariants = {
@@ -50,7 +49,6 @@ export default function TimerButtons(props) {
             break;
          default:
             console.log("button type not found");
-
       }
    };
 
@@ -61,7 +59,9 @@ export default function TimerButtons(props) {
                isStarted === false &&
                (
                   <div className={props.type}>
-                     <motion.button className="buttons" onClick={() => updateTimer(props.minutesValue)}
+                     <motion.button
+                        className="buttons"
+                        onClick={() => updateTimer(props.minutesValue)}
                         variants={buttonVariants}
                         key="minute"
                         whileHover="hover"
@@ -69,7 +69,9 @@ export default function TimerButtons(props) {
                      >
                         {props.minutes}
                      </motion.button>
-                     <motion.button className="buttons" onClick={() => updateTimer(props.secondsValue)}
+                     <motion.button
+                        className="buttons"
+                        onClick={() => updateTimer(props.secondsValue)}
                         variants={buttonVariants}
                         key="second"
                         whileHover="hover"

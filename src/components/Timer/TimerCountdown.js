@@ -13,11 +13,6 @@ export default function TimerCountdown() {
       color: isDark ? "#00ff7f" : "#001b87",
    }
 
-
-
-
-   console.log("rirenderizzato");
-
    const timerComplete = () => {
       timerCount > 0 && setShowModal(true);
       setIsStarted(false);
@@ -30,7 +25,7 @@ export default function TimerCountdown() {
             <h3 className="timer--count">{hours > 0 && `${hours}:`}{zeroPad(minutes)}:{zeroPad(seconds)}</h3>
          </div>
       )
-
+      
    };
 
    return (
@@ -42,7 +37,6 @@ export default function TimerCountdown() {
          onStart={() => { setIsStarted(true) }}
          onStop={() => { setIsStarted(false) }}
          onComplete={() => { timerComplete() }}
-
       />
    )
 };

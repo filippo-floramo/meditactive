@@ -8,6 +8,7 @@ import Navbar from "../components/Navbar";
 
 
 export default function Meditate() {
+
    const meditateVariants = {
       hidden: { opacity: 0.2 },
       visible: {
@@ -16,8 +17,8 @@ export default function Meditate() {
             opacity: { duration: 1 }
          }
       }
-   
    }
+   
    return (
       <motion.main
          variants={meditateVariants}
@@ -25,6 +26,7 @@ export default function Meditate() {
          animate="visible"
       >
          <Navbar id="meditate" />
+
          <Modal />
          <TimerIndex />
          <Waves />

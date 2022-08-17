@@ -1,7 +1,7 @@
 import React from "react";
 import { useContext } from "react";
-import Context from "../../context";
 import { motion } from "framer-motion";
+import Context from "../../context";
 import deepSound from "../../sounds/deep-meditation.mp3"
 import lightSound from "../../sounds/light-meditation.mp3"
 
@@ -10,7 +10,6 @@ import lightSound from "../../sounds/light-meditation.mp3"
 
 export default function TimerHandlers() {
 
-
    const handlerVariants = {
       hover: {
          scale: 1.2,
@@ -18,10 +17,7 @@ export default function TimerHandlers() {
             scale: { duration: 0.13 }
          }
       },
-
-
    }
-
 
    const { countdown, timerCount, isStarted, setTimerCount, useAudio, isDark } = useContext(Context);
 
