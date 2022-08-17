@@ -45,7 +45,7 @@ export function ContextProvider({ children }) {
       useEffect(() => {
          if (showModal || pageLocation.pathname === '/') { clearSound() };
          pageLocation.pathname === '/' && setIsStarted(false);
-      })
+      });
 
       useEffect(() => {
          audio.loop = true;
