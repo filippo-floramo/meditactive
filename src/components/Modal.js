@@ -44,7 +44,7 @@ export default function Modal() {
                   initial="hidden"
                   animate="visible"
                   >
-                     <h2>Congratulations! <br/> find what else you can do to fell better</h2>  
+                     <h2>Well done! <br/> Here's a quote for you to keep in mind for the rest of the day.  </h2>  
                      {showQuote && <p className="modal--activity">{apiQuote}</p>}
                      <button className="modal--close--button" onClick={() => { setShowModal(false) }}>Close</button>
                   </motion.div>

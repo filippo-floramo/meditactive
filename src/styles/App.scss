@@ -1,6 +1,7 @@
 @import "navbar";
 @import "home";
 @import "card";
+@import "config";
 @import "waves";
 @import "modal";
 @import "timer/timer-index";
@@ -8,17 +9,6 @@
 @import "timer/timer-buttons";
 @import "timer/timer-countdown";
 
-
-
-* {
-   margin: 0;
-   padding: 0;
-   box-sizing: border-box;
-}
-
-.route--link {
-   text-decoration: none;
-}
 
 
 @import "mobile";

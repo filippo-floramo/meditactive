@@ -17,7 +17,7 @@ export default function TimerIndex() {
          "linear-gradient(to right, #009ffd, #2480db, #2d62b8, #2e4595, #2a2a72)"
          :
          "linear-gradient(to right, #b3f6d8, #93e3d4, #77d0cf, #61bcc9, #52a7c1)",
-      backgroundSize: "300%",
+      backgroundSize: "400%",
       animation: isStarted && "bg-animation 15s infinite alternate"
    }
 

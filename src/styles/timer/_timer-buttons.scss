@@ -4,7 +4,9 @@
 .buttons {
    display: block;
 
-   font-size: 1rem;
+   font-size: 1.02rem;
+   font-family: "Noto Sans", sans-serif;
+   font-weight: 500;
 
    background-color: #5AD6C9;
    width: 55px;
@@ -16,8 +18,4 @@
    cursor: pointer;
    
 
-   // &:hover {
-   //    transform: scale(1.1);
-   //    transition-duration: 0.2s;
-   // }
 }
