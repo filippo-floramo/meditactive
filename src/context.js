@@ -1,5 +1,6 @@
 
 import { createContext, useState, useRef, useEffect } from "react";
+import { useLocation } from "react-router-dom";
 
 
 
@@ -9,7 +10,7 @@ export function ContextProvider({ children }) {
 
    const [isDark, setIsDark] = useState(localStorage.getItem('dark-mode') === 'true');
 
-   const [timerCount, setTimerCount] = useState(0);
+   const [timerCount, setTimerCount] = useState(6000);
 
    const [isStarted, setIsStarted] = useState(false);
 
@@ -21,7 +22,6 @@ export function ContextProvider({ children }) {
 
 
    const countdown = useRef(null);
-
 
    function pickMode(item) {
       if (item === "Deep") {
@@ -35,13 +35,16 @@ export function ContextProvider({ children }) {
    const useAudio = url => {
       const [audio] = useState(new Audio(url));
       const [playing, setPlaying] = useState(false);
+      const pageLocation = useLocation();
+
 
       const playSound = () => setPlaying(true);
       const pauseSound = () => setPlaying(false);
       const clearSound = () => { setPlaying(false); audio.currentTime = 0 };
 
       useEffect(() => {
-         if (showModal) { clearSound() };
+         if (showModal || pageLocation.pathname === '/') { clearSound() };
+         pageLocation.pathname === '/' && setIsStarted(false);
       })
 
       useEffect(() => {
