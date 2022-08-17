@@ -1,5 +1,5 @@
 
-import { createContext, useState, useRef, useEffect } from "react";
+import { createContext, useState, useRef, useEffect, useCallback } from "react";
 import { useLocation } from "react-router-dom";
 
 
@@ -33,12 +33,12 @@ export function ContextProvider({ children }) {
 
       const playSound = () => setPlaying(true);
       const pauseSound = () => setPlaying(false);
-      const clearSound = () => { setPlaying(false); audio.currentTime = 0 };
+      const clearSound = useCallback(() => { setPlaying(false); audio.currentTime = 0 }, [audio]);
 
       useEffect(() => {
-         if (showModal || pageLocation.pathname === '/') { clearSound() };
-         pageLocation.pathname === '/' && setIsStarted(false);
-      });
+         if (showModal) { clearSound() };
+         if(pageLocation.pathname === '/') {clearSound(); setIsStarted(false)};
+      }, [pageLocation, clearSound]);
 
       useEffect(() => {
          audio.loop = true;
