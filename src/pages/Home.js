@@ -31,11 +31,11 @@ export default function Home() {
    const cardData = [
       {
          icon: lightIcon,
-         type: "Chill"
+         type: "Light"
       },
       {
          icon: darkIcon,
-         type: "Sleep"
+         type: "Deep"
       },
    ];
 
@@ -55,7 +55,7 @@ export default function Home() {
       >
          <Navbar id="home" />
 
-         <h1 className="landing--welcome">Hey, how do you wan to feel right now? </h1>
+         <h1 className="landing--welcome">Hello!<br/> Choose how you want your session to be.</h1>
          <section className="landing--cards">
             {cards}
          </section>

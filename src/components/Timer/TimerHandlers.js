@@ -2,7 +2,8 @@ import React from "react";
 import { useContext } from "react";
 import Context from "../../context";
 import { motion } from "framer-motion";
-import sound from "../../sounds/shitreal.mp3"
+import deepSound from "../../sounds/deep-meditation.mp3"
+import lightSound from "../../sounds/light-meditation.mp3"
 
 
 
@@ -22,9 +23,9 @@ export default function TimerHandlers() {
    }
 
 
-   const { countdown, timerCount, isStarted, setTimerCount, useAudio } = useContext(Context);
+   const { countdown, timerCount, isStarted, setTimerCount, useAudio, isDark } = useContext(Context);
 
-   const [playSound, pauseSound, clearSound] = useAudio(sound);
+   const [playSound, pauseSound, clearSound] = useAudio(isDark ? deepSound : lightSound);
 
 
    return (

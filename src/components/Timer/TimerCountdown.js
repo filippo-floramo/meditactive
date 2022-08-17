@@ -10,7 +10,7 @@ export default function TimerCountdown() {
    const { countdown, timerCount, setIsStarted, setShowModal, isDark } = useContext(Context);
 
    const style = {
-      color: isDark ? "#07ff8b" : "#001b87",
+      color: isDark ? "#00ff7f" : "#001b87",
    }
 
 

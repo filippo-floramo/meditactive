@@ -7,7 +7,7 @@ const Context = createContext();
 
 export function ContextProvider({ children }) {
 
-   const [isDark, setIsDark] = useState(false);
+   const [isDark, setIsDark] = useState(localStorage.getItem('dark-mode') === 'true');
 
    const [timerCount, setTimerCount] = useState(6000);
 
@@ -24,7 +24,7 @@ export function ContextProvider({ children }) {
 
 
    function pickMode(item) {
-      if (item === "Sleep") {
+      if (item === "Deep") {
          setIsDark(true);
       } else {
          setIsDark(false)
@@ -52,6 +52,10 @@ export function ContextProvider({ children }) {
 
       return [playSound, pauseSound, clearSound];
    };
+
+   useEffect(() => {
+      localStorage.setItem("dark-mode", isDark)
+   }, [isDark]);
 
 
    useEffect(() => {

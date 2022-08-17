@@ -6,7 +6,7 @@
 }
 
 .landing {
-   background-color: blue;
+   background-image: linear-gradient(to top, #03e5b7, #00d0d4, #00b8ea, #009bef, #037ade);
    height: 100vh;
 
    display: flex;
@@ -15,13 +15,16 @@
 
 
    &--welcome {
-      margin-top: 60px;
-      color: greenyellow;
+      text-align: center;
+      margin-top: 50px;
+      color: white;
+      padding-inline: 10px;
+      text-shadow: 2px 2px  5px rgba(0, 0, 0, 0.072);
    }
 
 
    &--cards {
-      margin-top: 140px;
+      margin-top: 80px;
       display: flex;
       flex-direction: row;
    }
