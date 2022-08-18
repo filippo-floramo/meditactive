@@ -1,6 +1,6 @@
 <p align="center">
 
-   <a href="https://meditactive.netlify.app">
+   <a href="https://meditactive.netlify.app" target="_blank">
       <img src="/public/logo.png">
    </a>
 
