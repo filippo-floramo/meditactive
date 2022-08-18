@@ -1,10 +1,10 @@
 <p align="center">
 
    <a href="https://meditactive.netlify.app">
-   <img src="/logo.png">
+   <img src="/public/logo.png">
    </a>
 
-   <h2>Meditactive</h2>
+   <h2 align="center">Meditactive</h2>
 </p>
 
 
