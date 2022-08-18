@@ -28,7 +28,7 @@ This Project had the following requirements:
 
 - [React Wavify](https://github.com/woofers/react-wavify)
 
--[SASS](https://github.com/sass/sass)
+- [SASS](https://github.com/sass/sass)
 
 
 
