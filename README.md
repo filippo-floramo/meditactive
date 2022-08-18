@@ -1,10 +1,11 @@
 <p align="center">
 
    <a href="https://meditactive.netlify.app">
-   <img src="/public/logo.png">
+      <img src="/public/logo.png">
    </a>
 
    <h2 align="center">Meditactive</h2>
+   
 </p>
 
 
@@ -21,12 +22,12 @@ This Project had the following requirements:
 
 - The timer can ben be paused/stopped/reset
 
-- easy and intuitive UX/UI
+- Easy and intuitive UX/UI
 
 - Responsive design
 
 
-#### Libraries and technologies used
+#### Libraries and technologies used:
 
 - [Axios](https://github.com/axios/axios)
 
@@ -60,3 +61,10 @@ npm install
 ```npm
 npm start
 ```
+## Contact
+
+- Gmail: filifloramo@gmail.com
+
+- Linkedin: [Profile](https://www.linkedin.com/in/filippo-floramo-296154214/)
+
+- Start2impact: [Personal Page](https://talent.start2impact.it/profile/filippo-floramo)
