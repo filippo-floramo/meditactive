@@ -1,6 +1,6 @@
 # About the Project
 
-This project was built using [ReactJs](https://reactjs.org/).\
+This project was built using [React](https://reactjs.org/).\
 
 It is a simple meditation app that allows you to choose between light and deep meditation mode.\
 Once the session has completed, an API call is made to show an inspirational quote.
@@ -14,6 +14,22 @@ This Project had the following requirements:
 - easy and intuitive UX/UI
 
 - Responsive design
+
+
+#### Libraries and technologies used
+
+- [Axios](https://github.com/axios/axios)
+
+- [Framer Motion](https://github.com/framer/motion)
+
+- [React Router](https://github.com/remix-run/react-router)
+
+- [React Countdown](https://github.com/ndresx/react-countdown)
+
+- [React Wavify](https://github.com/woofers/react-wavify)
+
+-[SASS](https://github.com/sass/sass)
+
 
 
 
