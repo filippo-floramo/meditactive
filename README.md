@@ -1,6 +1,23 @@
-# Getting Started with Create React App
+# About the Project
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+This project was built using [ReactJs](https://reactjs.org/).\
+
+It is a simple meditation app that allows you to choose between light and deep meditation mode.\
+Once the session has completed, an API call is made to show an inspirational quote.
+
+This Project had the following requirements:
+
+- A programmable timer
+
+- The timer can ben be paused/stopped/reset
+
+- easy and intuitive UX/UI
+
+- Responsive design
+
+
+
+
 
 ## Available Scripts
 
