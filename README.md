@@ -1,6 +1,6 @@
 # About the Project
 
-This project was built using [ReactJs](https://reactjs.org/).\
+This project was built using [ReactJs](https://reactjs.org/).
 
 It is a simple meditation app that allows you to choose between light and deep meditation mode.\
 Once the session has completed, an API call is made to show an inspirational quote.
