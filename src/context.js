@@ -83,7 +83,6 @@ export function ContextProvider({ children }) {
             const data = response.data.content;
             setApiQuote(data);
             setShowQuote(true);
-            console.log(response);
          })
          .catch(err => console.error(err));
 
