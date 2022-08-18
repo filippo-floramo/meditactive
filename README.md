@@ -29,6 +29,8 @@ This Project had the following requirements:
 
 #### Libraries and technologies used:
 
+- [SASS](https://github.com/sass/sass)
+
 - [Axios](https://github.com/axios/axios)
 
 - [Framer Motion](https://github.com/framer/motion)
@@ -39,7 +41,6 @@ This Project had the following requirements:
 
 - [React Wavify](https://github.com/woofers/react-wavify)
 
-- [SASS](https://github.com/sass/sass)
 
 
 ## Getting Started
