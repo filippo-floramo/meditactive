@@ -10,7 +10,7 @@ export function ContextProvider({ children }) {
 
    const [isDark, setIsDark] = useState(localStorage.getItem('dark-mode') === 'true');
 
-   const [timerCount, setTimerCount] = useState(0);
+   const [timerCount, setTimerCount] = useState(600);
 
    const [isStarted, setIsStarted] = useState(false);
 
@@ -33,18 +33,22 @@ export function ContextProvider({ children }) {
 
       const playSound = () => setPlaying(true);
       const pauseSound = () => setPlaying(false);
-      const clearSound = useCallback(() => { setPlaying(false); audio.currentTime = 0 }, [audio]);
+      const clearSound = useCallback(() => { setPlaying(false); audio.pause(); audio.currentTime = 0 }, [audio]);
+
 
       useEffect(() => {
          if (showModal) { clearSound() };
-         if(pageLocation.pathname === '/') {clearSound(); setIsStarted(false)};
-      }, [pageLocation, clearSound]);
+      })
 
       useEffect(() => {
          audio.loop = true;
          playing ? audio.play() : audio.pause();
 
       }, [playing, audio]);
+
+      useEffect(() => {
+         if (pageLocation.pathname !== '/meditate') { clearSound(); setIsStarted(false) };
+      }, [pageLocation, clearSound]);
 
       return [playSound, pauseSound, clearSound];
    };
