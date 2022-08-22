@@ -10,7 +10,7 @@ export function ContextProvider({ children }) {
 
    const [isDark, setIsDark] = useState(localStorage.getItem('dark-mode') === 'true');
 
-   const [timerCount, setTimerCount] = useState(6000);
+   const [timerCount, setTimerCount] = useState(0);
 
    const [isStarted, setIsStarted] = useState(false);
 
