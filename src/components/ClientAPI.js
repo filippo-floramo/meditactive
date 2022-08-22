@@ -1,4 +1,4 @@
-import React, { useContext,useEffect } from "react";
+import { useContext,useEffect } from "react";
 import Context from "../context";
 
 
@@ -19,7 +19,7 @@ export default function ClientAPI() {
          })
          .catch(err => console.error(err));
 
-   }, []);
+   }, [setApiQuote,setShowQuote]);
 
 
 };
