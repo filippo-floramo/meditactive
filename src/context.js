@@ -10,7 +10,7 @@ export function ContextProvider({ children }) {
 
    const [isDark, setIsDark] = useState(localStorage.getItem('dark-mode') === 'true');
 
-   const [timerCount, setTimerCount] = useState(0);
+   const [timerCount, setTimerCount] = useState(6000);
 
    const [isStarted, setIsStarted] = useState(false);
 
@@ -72,22 +72,6 @@ export function ContextProvider({ children }) {
    }, [isDark]);
 
 
-   /*Api call for Modal */
-
-   useEffect(() => {
-
-      const axios = require("axios");
-
-      axios.get("https://api.quotable.io/random?tags=wisdom,famous-quotes")
-         .then(response => {
-            const data = response.data.content;
-            setApiQuote(data);
-            setShowQuote(true);
-         })
-         .catch(err => console.error(err));
-
-   }, []);
-
 
 
    return (
@@ -102,6 +86,7 @@ export function ContextProvider({ children }) {
          showModal,
          setShowModal,
          apiQuote,
+         setApiQuote,
          showQuote,
          setShowQuote,
          useAudio
