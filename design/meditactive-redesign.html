@@ -1,0 +1,395 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Meditactive</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+body{margin:0}
+*{box-sizing:border-box}
+a{color:inherit}a:hover{opacity:.8}
+.mt-btn{font:inherit;cursor:pointer;transition:transform .35s cubic-bezier(.2,.8,.2,1),background-color 1.2s,color 1.2s,border-color 1.2s,opacity .4s,box-shadow .4s}
+.mt-btn:hover{transform:scale(1.05)}
+.mt-btn:active{transform:scale(.95)}
+.mt-btn:disabled{cursor:default}
+.mt-btn:disabled:hover,.mt-btn:disabled:active{transform:none}
+.mt-btn:focus-visible,.mt-seg:focus-visible{outline:2px solid currentColor;outline-offset:3px}
+.mt-card{transition:transform .6s cubic-bezier(.2,.8,.2,1),background-color .5s,border-color .5s,box-shadow .6s}
+.mt-card:hover{transform:translateY(-6px);background-color:rgba(8,28,64,.38)!important;border-color:rgba(255,255,255,.5)!important;box-shadow:0 24px 60px rgba(4,16,48,.28)}
+.mt-card:active{transform:translateY(-2px) scale(.99)}
+.mt-card:hover .mt-arrow{transform:translateX(5px)}
+.mt-seg{font:inherit;border:0;background:transparent;cursor:pointer;transition:color .6s}
+.mt-seg:disabled{cursor:default}
+.mt-screen{animation:mt-enter 1s cubic-bezier(.2,.8,.2,1) both}
+.mt-screen.is-leaving{animation:mt-leave .6s cubic-bezier(.4,0,.2,1) both}
+.mt-rise{animation:mt-enter 1.1s cubic-bezier(.2,.8,.2,1) both}
+.d1{animation-delay:.1s}.d2{animation-delay:.22s}.d3{animation-delay:.34s}
+@keyframes mt-enter{from{opacity:0;transform:translateY(16px) scale(.985);filter:blur(6px)}to{opacity:1;transform:none;filter:blur(0)}}
+@keyframes mt-leave{from{opacity:1;transform:none;filter:blur(0)}to{opacity:0;transform:scale(.97);filter:blur(10px)}}
+.mt-blob{position:absolute;width:80vmax;height:80vmax;border-radius:50%;will-change:transform;animation:mt-drift 26s ease-in-out infinite alternate}
+.mt-blob.b2{animation-duration:34s;animation-delay:-9s}
+.mt-blob.b3{animation-duration:41s;animation-delay:-17s}
+@keyframes mt-drift{0%{transform:translate3d(-8%,-6%,0) scale(1)}50%{transform:translate3d(7%,5%,0) scale(1.14)}100%{transform:translate3d(-3%,9%,0) scale(.94)}}
+.mt-wave{position:absolute;left:0;bottom:0;width:200%;height:100%;will-change:transform;animation:mt-wave 16s linear infinite}
+.mt-wave.w2{animation-duration:22s;animation-direction:reverse}
+.mt-wave.w3{animation-duration:12s}
+@keyframes mt-wave{from{transform:translate3d(0,0,0)}to{transform:translate3d(-50%,0,0)}}
+.mt-breathe{animation:mt-breathe 8s ease-in-out infinite}
+@keyframes mt-breathe{0%,100%{transform:scale(.88);opacity:.3}50%{transform:scale(1.08);opacity:.9}}
+.mt-in{animation:mt-in 8s ease-in-out infinite}
+.mt-out{animation:mt-out 8s ease-in-out infinite}
+@keyframes mt-in{0%,4%{opacity:0}12%,40%{opacity:1}48%,100%{opacity:0}}
+@keyframes mt-out{0%,52%{opacity:0}60%,90%{opacity:1}98%,100%{opacity:0}}
+.mt-fade{animation:mt-fade .5s ease both}
+@keyframes mt-fade{from{opacity:0}to{opacity:1}}
+.mt-sheet{animation:mt-sheet .9s cubic-bezier(.2,1.15,.3,1) both;animation-delay:.1s}
+@keyframes mt-sheet{from{opacity:0;transform:translateY(56px) scale(.95)}to{opacity:1;transform:none}}
+@media (prefers-reduced-motion: reduce){.mt-blob,.mt-wave,.mt-breathe{animation:none}.mt-screen,.mt-rise,.mt-sheet,.mt-fade{animation-duration:.01s}}
+</style>
+</helmet>
+
+<div style="position: relative; width: 100%; height: 100vh; min-height: 640px; overflow: hidden; font-family: 'Manrope', system-ui, sans-serif; color: {{ink}}; background: #0A3D91">
+
+  <!-- Gradient flow: three layers, cross-faded by mode -->
+  <div aria-hidden="true" style="position: absolute; inset: 0; z-index: 0; opacity: {{homeOp}}; transition: opacity 1.4s ease; background: linear-gradient(180deg, #0A3D91 0%, #0B64B0 45%, #0E93A8 82%, #23C9A6 100%)">
+    <div class="mt-blob" style="top: -40%; left: -25%; background: radial-gradient(closest-side, rgba(3, 122, 222, 0.8), rgba(3, 122, 222, 0)); animation-play-state: {{flowState}}"></div>
+    <div class="mt-blob b2" style="top: 25%; right: -35%; background: radial-gradient(closest-side, rgba(0, 184, 234, 0.4), rgba(0, 184, 234, 0)); animation-play-state: {{flowState}}"></div>
+    <div class="mt-blob b3" style="bottom: -55%; left: 5%; background: radial-gradient(closest-side, rgba(3, 229, 183, 0.55), rgba(3, 229, 183, 0)); animation-play-state: {{flowState}}"></div>
+  </div>
+  <div aria-hidden="true" style="position: absolute; inset: 0; z-index: 0; opacity: {{lightOp}}; transition: opacity 1.4s ease; background: linear-gradient(160deg, #E6FBF2 0%, #B3F6D8 35%, #77D0CF 70%, #52A7C1 100%)">
+    <div class="mt-blob" style="top: -40%; left: -30%; background: radial-gradient(closest-side, rgba(214, 255, 236, 0.9), rgba(214, 255, 236, 0)); animation-play-state: {{flowState}}"></div>
+    <div class="mt-blob b2" style="top: 10%; right: -40%; background: radial-gradient(closest-side, rgba(147, 227, 212, 0.75), rgba(147, 227, 212, 0)); animation-play-state: {{flowState}}"></div>
+    <div class="mt-blob b3" style="bottom: -50%; left: 0%; background: radial-gradient(closest-side, rgba(97, 188, 201, 0.6), rgba(97, 188, 201, 0)); animation-play-state: {{flowState}}"></div>
+  </div>
+  <div aria-hidden="true" style="position: absolute; inset: 0; z-index: 0; opacity: {{deepOp}}; transition: opacity 1.4s ease; background: linear-gradient(160deg, #1E1F5C 0%, #2A3B88 40%, #2D58AE 75%, #2A6FC9 100%)">
+    <div class="mt-blob" style="top: -40%; left: -30%; background: radial-gradient(closest-side, rgba(30, 31, 92, 0.95), rgba(30, 31, 92, 0)); animation-play-state: {{flowState}}"></div>
+    <div class="mt-blob b2" style="top: 15%; right: -40%; background: radial-gradient(closest-side, rgba(0, 159, 253, 0.35), rgba(0, 159, 253, 0)); animation-play-state: {{flowState}}"></div>
+    <div class="mt-blob b3" style="bottom: -55%; left: -5%; background: radial-gradient(closest-side, rgba(46, 69, 149, 0.8), rgba(46, 69, 149, 0)); animation-play-state: {{flowState}}"></div>
+  </div>
+
+  <!-- Waves: three layers, rise with session progress -->
+  <div aria-hidden="true" style="position: absolute; left: 0; right: 0; bottom: 0; z-index: 1; height: {{waveHeight}}; transition: height 1.6s cubic-bezier(.4,0,.2,1); pointer-events: none">
+    <div style="position: absolute; left: 0; right: 0; bottom: 0; height: 100%; overflow: hidden">
+      <svg class="mt-wave" viewBox="0 0 2880 160" preserveAspectRatio="none"><path d="M0 80 C120 30 240 30 360 80 S600 130 720 80 S960 30 1080 80 S1320 130 1440 80 S1680 30 1800 80 S2040 130 2160 80 S2400 30 2520 80 S2760 130 2880 80 L2880 160 L0 160 Z" style="fill: {{w1}}; transition: fill 1.4s"></path></svg>
+    </div>
+    <div style="position: absolute; left: 0; right: 0; bottom: 0; height: 84%; overflow: hidden">
+      <svg class="mt-wave w2" viewBox="0 0 2880 160" preserveAspectRatio="none"><path d="M0 80 C120 112 240 112 360 80 S600 48 720 80 S960 112 1080 80 S1320 48 1440 80 S1680 112 1800 80 S2040 48 2160 80 S2400 112 2520 80 S2760 48 2880 80 L2880 160 L0 160 Z" style="fill: {{w2}}; transition: fill 1.4s"></path></svg>
+    </div>
+    <div style="position: absolute; left: 0; right: 0; bottom: 0; height: 66%; overflow: hidden">
+      <svg class="mt-wave w3" viewBox="0 0 2880 160" preserveAspectRatio="none">
+        <defs>
+          <linearGradient id="mtWaveFront" x1="0" y1="0" x2="0" y2="1">
+            <stop offset="0" style="stop-color: {{wTop}}; transition: stop-color 1.4s"></stop>
+            <stop offset="1" style="stop-color: {{wBot}}; transition: stop-color 1.4s"></stop>
+          </linearGradient>
+        </defs>
+        <path d="M0 80 C80 58 160 58 240 80 S400 102 480 80 S640 58 720 80 S880 102 960 80 S1120 58 1200 80 S1360 102 1440 80 S1600 58 1680 80 S1840 102 1920 80 S2080 58 2160 80 S2320 102 2400 80 S2560 58 2640 80 S2800 102 2880 80 L2880 160 L0 160 Z" fill="url(#mtWaveFront)"></path>
+      </svg>
+    </div>
+  </div>
+
+  <!-- HOME -->
+  <sc-if value="{{isHome}}" hint-placeholder-val="{{ true }}">
+    <div class="mt-screen {{leaveClass}}" style="position: absolute; inset: 0; z-index: 2; overflow-y: auto; color: #FFFFFF">
+      <header style="display: flex; align-items: center; gap: 10px; padding: 24px clamp(16px, 4vw, 40px)">
+        <svg width="30" height="30" viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M16 26c-4-3-6-7-6-11 0-3 2-6 6-9 4 3 6 6 6 9 0 4-2 8-6 11z"></path><path d="M16 26c-5 0-10-3-12-9 3-1 6-1 8 0"></path><path d="M16 26c5 0 10-3 12-9-3-1-6-1-8 0"></path></svg>
+        <span style="font-size: 18px; font-weight: 700; letter-spacing: -0.01em">Meditactive</span>
+      </header>
+      <div style="max-width: 760px; margin: 0 auto; padding: clamp(24px, 8vh, 80px) 16px 180px; display: flex; flex-direction: column; align-items: center; gap: 16px; text-align: center">
+        <h1 class="mt-rise" style="margin: 0; font-size: clamp(32px, 5vw, 54px); font-weight: 600; letter-spacing: -0.025em; line-height: 1.08; text-wrap: balance">Hello. How would you like your session to be?</h1>
+        <p class="mt-rise d1" style="margin: 0; font-size: 17px; line-height: 1.55; color: rgba(255, 255, 255, 0.86)">Choose a mode — you'll set the timer on the next screen.</p>
+        <div style="display: flex; flex-wrap: wrap; justify-content: center; gap: 20px; width: 100%; margin-top: 36px">
+          <div class="mt-rise d2" style="flex: 1 1 240px; max-width: 300px; display: flex">
+            <button class="mt-card" type="button" onClick="{{pickLight}}" style="width: 100%; min-height: 230px; display: flex; flex-direction: column; align-items: flex-start; gap: 12px; padding: 28px; border-radius: 28px; text-align: left; font: inherit; color: #FFFFFF; cursor: pointer; background-color: rgba(8, 28, 64, 0.26); border: 1px solid rgba(255, 255, 255, 0.28); backdrop-filter: blur(18px); -webkit-backdrop-filter: blur(18px)">
+              <span aria-hidden="true" style="width: 52px; height: 52px; border-radius: 50%; display: grid; place-items: center; background: linear-gradient(135deg, #B3F6D8, #52A7C1); color: #0B2A3C; margin-bottom: 6px">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><circle cx="12" cy="12" r="4"></circle><path d="M12 2.5v2M12 19.5v2M2.5 12h2M19.5 12h2M5.3 5.3l1.4 1.4M17.3 17.3l1.4 1.4M5.3 18.7l1.4-1.4M17.3 6.7l1.4-1.4"></path></svg>
+              </span>
+              <span style="font-size: 24px; font-weight: 600; letter-spacing: -0.01em">Light</span>
+              <span style="font-size: 15px; line-height: 1.5; color: rgba(255, 255, 255, 0.86)">Bright, airy tones for a gentle reset between tasks.</span>
+              <span style="margin-top: auto; display: flex; align-items: center; gap: 8px; font-size: 14px; font-weight: 600">Begin <span class="mt-arrow" style="display: inline-flex; transition: transform .4s cubic-bezier(.2,.8,.2,1)"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"></path></svg></span></span>
+            </button>
+          </div>
+          <div class="mt-rise d3" style="flex: 1 1 240px; max-width: 300px; display: flex">
+            <button class="mt-card" type="button" onClick="{{pickDeep}}" style="width: 100%; min-height: 230px; display: flex; flex-direction: column; align-items: flex-start; gap: 12px; padding: 28px; border-radius: 28px; text-align: left; font: inherit; color: #FFFFFF; cursor: pointer; background-color: rgba(8, 28, 64, 0.26); border: 1px solid rgba(255, 255, 255, 0.28); backdrop-filter: blur(18px); -webkit-backdrop-filter: blur(18px)">
+              <span aria-hidden="true" style="width: 52px; height: 52px; border-radius: 50%; display: grid; place-items: center; background: linear-gradient(135deg, #009FFD, #2A2A72); color: #FFFFFF; margin-bottom: 6px">
+                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M20 14.5A8 8 0 1 1 9.5 4a6.5 6.5 0 0 0 10.5 10.5z"></path></svg>
+              </span>
+              <span style="font-size: 24px; font-weight: 600; letter-spacing: -0.01em">Deep</span>
+              <span style="font-size: 15px; line-height: 1.5; color: rgba(255, 255, 255, 0.86)">Low, slow tones for longer, quieter sits.</span>
+              <span style="margin-top: auto; display: flex; align-items: center; gap: 8px; font-size: 14px; font-weight: 600">Begin <span class="mt-arrow" style="display: inline-flex; transition: transform .4s cubic-bezier(.2,.8,.2,1)"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"></path></svg></span></span>
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </sc-if>
+
+  <!-- SESSION -->
+  <sc-if value="{{isSession}}" hint-placeholder-val="{{ false }}">
+    <div class="mt-screen {{leaveClass}}" style="position: absolute; inset: 0; z-index: 2; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 40px; padding: 96px 16px 64px">
+      <header style="position: absolute; top: 0; left: 0; right: 0; display: flex; align-items: center; justify-content: space-between; gap: 12px; padding: 20px clamp(16px, 4vw, 40px)">
+        <button class="mt-btn" type="button" aria-label="Back to home" onClick="{{goHome}}" style="width: 44px; height: 44px; border-radius: 50%; display: grid; place-items: center; color: {{ink}}; background-color: {{surface}}; border: 1px solid {{border}}; backdrop-filter: blur(14px); -webkit-backdrop-filter: blur(14px)">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M15 18l-6-6 6-6"></path></svg>
+        </button>
+        <div role="group" aria-label="Meditation mode" style="position: relative; display: inline-flex; padding: 4px; border-radius: 999px; background-color: {{surface}}; border: 1px solid {{border}}; backdrop-filter: blur(14px); -webkit-backdrop-filter: blur(14px); opacity: {{segOpacity}}; transition: opacity .5s, background-color 1.2s, border-color 1.2s">
+          <span aria-hidden="true" style="position: absolute; top: 4px; bottom: 4px; left: 4px; width: calc(50% - 4px); border-radius: 999px; background-color: {{primaryBg}}; transform: {{thumbX}}; transition: transform .7s cubic-bezier(.2,.8,.2,1), background-color 1.2s"></span>
+          <button class="mt-seg" type="button" onClick="{{setLight}}" disabled="{{segDisabled}}" aria-pressed="{{lightPressed}}" style="position: relative; width: 92px; height: 40px; border-radius: 999px; font-size: 14px; font-weight: 600; color: {{segLightColor}}">Light</button>
+          <button class="mt-seg" type="button" onClick="{{setDeep}}" disabled="{{segDisabled}}" aria-pressed="{{deepPressed}}" style="position: relative; width: 92px; height: 40px; border-radius: 999px; font-size: 14px; font-weight: 600; color: {{segDeepColor}}">Deep</button>
+        </div>
+        <span aria-hidden="true" style="width: 44px; height: 44px; display: grid; place-items: center">
+          <svg width="26" height="26" viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M16 26c-4-3-6-7-6-11 0-3 2-6 6-9 4 3 6 6 6 9 0 4-2 8-6 11z"></path><path d="M16 26c-5 0-10-3-12-9 3-1 6-1 8 0"></path><path d="M16 26c5 0 10-3 12-9-3-1-6-1-8 0"></path></svg>
+        </span>
+      </header>
+
+      <div style="display: flex; align-items: center; justify-content: center; gap: clamp(10px, 4vw, 48px)">
+        <div style="display: flex; flex-direction: column; gap: 14px; opacity: {{adjOpacity}}; transform: {{adjLeftT}}; pointer-events: {{adjPointer}}; transition: opacity .5s ease, transform .7s cubic-bezier(.2,.8,.2,1)">
+          <button class="mt-btn" type="button" aria-label="Remove 5 minutes" onClick="{{minus5m}}" disabled="{{adjDisabled}}" style="width: 52px; height: 52px; border-radius: 50%; font-size: 13px; font-weight: 600; color: {{ink}}; background-color: {{surface}}; border: 1px solid {{border}}; backdrop-filter: blur(14px); -webkit-backdrop-filter: blur(14px)">−5m</button>
+          <button class="mt-btn" type="button" aria-label="Remove 30 seconds" onClick="{{minus30s}}" disabled="{{adjDisabled}}" style="width: 52px; height: 52px; border-radius: 50%; font-size: 13px; font-weight: 600; color: {{ink}}; background-color: {{surface}}; border: 1px solid {{border}}; backdrop-filter: blur(14px); -webkit-backdrop-filter: blur(14px)">−30s</button>
+        </div>
+
+        <div style="position: relative; width: clamp(210px, 56vw, 320px); aspect-ratio: 1 / 1; flex: none">
+          <sc-if value="{{isRunning}}" hint-placeholder-val="{{ false }}">
+            <div class="mt-breathe" aria-hidden="true" style="position: absolute; inset: -8%; border-radius: 50%; background: radial-gradient(circle, {{halo}} 0%, rgba(255, 255, 255, 0) 68%)"></div>
+          </sc-if>
+          <svg viewBox="0 0 320 320" aria-hidden="true" style="position: absolute; inset: 0; width: 100%; height: 100%">
+            <circle cx="160" cy="160" r="150" fill="none" stroke-width="2" style="stroke: {{track}}; transition: stroke 1.2s"></circle>
+            <circle cx="160" cy="160" r="150" fill="none" stroke-width="4" stroke-linecap="round" stroke-dasharray="942.48" transform="rotate(-90 160 160)" style="stroke: {{ringColor}}; stroke-dashoffset: {{dashOffset}}; opacity: {{ringOpacity}}; transition: stroke-dashoffset .3s linear, stroke 1.2s, opacity .5s"></circle>
+          </svg>
+          <div style="position: absolute; inset: 9%; border-radius: 50%; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 8px; background-color: {{surface}}; border: 1px solid {{border}}; backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px); transition: background-color 1.2s, border-color 1.2s">
+            <span style="font-size: 12px; font-weight: 600; letter-spacing: 0.16em; text-transform: uppercase; color: {{inkSoft}}">{{modeName}}</span>
+            <span role="timer" style="font-size: clamp(44px, 11vw, 68px); font-weight: 300; letter-spacing: -0.03em; line-height: 1; font-variant-numeric: tabular-nums">{{timeText}}</span>
+            <div style="position: relative; width: 100%; height: 20px; font-size: 14px; font-weight: 500; text-align: center; color: {{inkSoft}}">
+              <sc-if value="{{isRunning}}" hint-placeholder-val="{{ false }}">
+                <span class="mt-in" style="position: absolute; inset: 0">Breathe in</span>
+                <span class="mt-out" style="position: absolute; inset: 0">Breathe out</span>
+              </sc-if>
+              <sc-if value="{{notRunning}}" hint-placeholder-val="{{ true }}">
+                <span class="mt-fade" style="position: absolute; inset: 0">{{statusText}}</span>
+              </sc-if>
+            </div>
+          </div>
+        </div>
+
+        <div style="display: flex; flex-direction: column; gap: 14px; opacity: {{adjOpacity}}; transform: {{adjRightT}}; pointer-events: {{adjPointer}}; transition: opacity .5s ease, transform .7s cubic-bezier(.2,.8,.2,1)">
+          <button class="mt-btn" type="button" aria-label="Add 5 minutes" onClick="{{plus5m}}" disabled="{{adjDisabled}}" style="width: 52px; height: 52px; border-radius: 50%; font-size: 13px; font-weight: 600; color: {{ink}}; background-color: {{surface}}; border: 1px solid {{border}}; backdrop-filter: blur(14px); -webkit-backdrop-filter: blur(14px)">+5m</button>
+          <button class="mt-btn" type="button" aria-label="Add 30 seconds" onClick="{{plus30s}}" disabled="{{adjDisabled}}" style="width: 52px; height: 52px; border-radius: 50%; font-size: 13px; font-weight: 600; color: {{ink}}; background-color: {{surface}}; border: 1px solid {{border}}; backdrop-filter: blur(14px); -webkit-backdrop-filter: blur(14px)">+30s</button>
+        </div>
+      </div>
+
+      <div style="display: flex; align-items: center; gap: 28px">
+        <sc-if value="{{isActive}}" hint-placeholder-val="{{ false }}">
+          <button class="mt-btn" type="button" aria-label="Stop session" onClick="{{stop}}" style="width: 56px; height: 56px; border-radius: 50%; display: grid; place-items: center; color: {{ink}}; background-color: {{surface}}; border: 1px solid {{border}}; backdrop-filter: blur(14px); -webkit-backdrop-filter: blur(14px)">
+            <svg width="18" height="18" viewBox="0 0 24 24" aria-hidden="true"><rect x="6" y="6" width="12" height="12" rx="2.5" fill="currentColor"></rect></svg>
+          </button>
+        </sc-if>
+        <sc-if value="{{notActive}}" hint-placeholder-val="{{ true }}">
+          <button class="mt-btn" type="button" aria-label="Reset timer" onClick="{{reset}}" style="width: 56px; height: 56px; border-radius: 50%; display: grid; place-items: center; color: {{ink}}; background-color: {{surface}}; border: 1px solid {{border}}; backdrop-filter: blur(14px); -webkit-backdrop-filter: blur(14px)">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3.5 12a8.5 8.5 0 1 0 2.6-6.1"></path><path d="M3.5 4v5h5"></path></svg>
+          </button>
+        </sc-if>
+
+        <button class="mt-btn" type="button" aria-label="{{playLabel}}" onClick="{{togglePlay}}" disabled="{{playDisabled}}" style="width: 80px; height: 80px; border-radius: 50%; border: 0; display: grid; place-items: center; color: {{primaryFg}}; background-color: {{primaryBg}}; box-shadow: 0 14px 34px {{shadow}}; opacity: {{playOpacity}}">
+          <sc-if value="{{isRunning}}" hint-placeholder-val="{{ false }}">
+            <svg width="26" height="26" viewBox="0 0 24 24" aria-hidden="true"><rect x="6" y="5" width="4" height="14" rx="1.5" fill="currentColor"></rect><rect x="14" y="5" width="4" height="14" rx="1.5" fill="currentColor"></rect></svg>
+          </sc-if>
+          <sc-if value="{{notRunning}}" hint-placeholder-val="{{ true }}">
+            <svg width="28" height="28" viewBox="0 0 24 24" aria-hidden="true"><path d="M8.5 5.2v13.6a1 1 0 0 0 1.5.86l10.2-6.8a1 1 0 0 0 0-1.72L10 4.34a1 1 0 0 0-1.5.86z" fill="currentColor"></path></svg>
+          </sc-if>
+        </button>
+
+        <button class="mt-btn" type="button" aria-label="Ambient sound" aria-pressed="{{soundPressed}}" onClick="{{toggleSound}}" style="width: 56px; height: 56px; border-radius: 50%; display: grid; place-items: center; color: {{ink}}; background-color: {{surface}}; border: 1px solid {{border}}; backdrop-filter: blur(14px); -webkit-backdrop-filter: blur(14px)">
+          <sc-if value="{{soundOn}}" hint-placeholder-val="{{ true }}">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M11 5 6 9H3v6h3l5 4z"></path><path d="M15.5 8.5a5 5 0 0 1 0 7"></path><path d="M18.5 5.5a9 9 0 0 1 0 13"></path></svg>
+          </sc-if>
+          <sc-if value="{{soundOff}}" hint-placeholder-val="{{ false }}">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M11 5 6 9H3v6h3l5 4z"></path><path d="M16 9.5l5 5M21 9.5l-5 5"></path></svg>
+          </sc-if>
+        </button>
+      </div>
+    </div>
+  </sc-if>
+
+  <!-- COMPLETION -->
+  <sc-if value="{{done}}" hint-placeholder-val="{{ false }}">
+    <div class="mt-fade" style="position: absolute; inset: 0; z-index: 5; display: flex; align-items: center; justify-content: center; padding: 16px; background-color: {{backdrop}}; backdrop-filter: blur(8px); -webkit-backdrop-filter: blur(8px)">
+      <div class="mt-sheet" role="dialog" aria-modal="true" aria-labelledby="mt-done-title" style="width: 100%; max-width: 460px; padding: 36px 32px 28px; border-radius: 32px; display: flex; flex-direction: column; align-items: center; gap: 14px; text-align: center; color: {{sheetInk}}; background-color: {{sheetBg}}; box-shadow: 0 30px 80px rgba(4, 16, 40, 0.35)">
+        <span aria-hidden="true" style="width: 56px; height: 56px; border-radius: 50%; display: grid; place-items: center; color: {{primaryFg}}; background-color: {{primaryBg}}; margin-bottom: 4px">
+          <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.5l4.5 4.5L19 7.5"></path></svg>
+        </span>
+        <h2 id="mt-done-title" style="margin: 0; font-size: 28px; font-weight: 600; letter-spacing: -0.015em">Well done.</h2>
+        <p style="margin: 0; font-size: 15px; line-height: 1.5; color: {{sheetSoft}}">{{doneText}}</p>
+        <figure style="margin: 10px 0 0; padding: 22px 4px; width: 100%; border-top: 1px solid {{sheetLine}}; border-bottom: 1px solid {{sheetLine}}">
+          <blockquote style="margin: 0; font-size: 19px; line-height: 1.5; font-weight: 500; text-wrap: balance">“{{quote.text}}”</blockquote>
+          <figcaption style="margin-top: 10px; font-size: 13px; font-weight: 500; color: {{sheetSoft}}">{{quote.author}}</figcaption>
+        </figure>
+        <div style="display: flex; flex-wrap: wrap; gap: 12px; width: 100%; margin-top: 10px">
+          <button class="mt-btn" type="button" onClick="{{sheetHome}}" style="flex: 1 1 140px; height: 50px; border-radius: 999px; font-size: 15px; font-weight: 600; color: {{sheetInk}}; background-color: rgba(255, 255, 255, 0); border: 1px solid {{sheetLine}}">Back home</button>
+          <button class="mt-btn" type="button" onClick="{{again}}" style="flex: 1 1 140px; height: 50px; border-radius: 999px; border: 0; font-size: 15px; font-weight: 600; color: {{primaryFg}}; background-color: {{primaryBg}}">New session</button>
+        </div>
+      </div>
+    </div>
+  </sc-if>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"demoSpeed":{"editor":"enum","options":["1x","10x","60x"],"default":"1x","section":"Prototype"},"$preview":{"width":1280,"height":800}}'>
+var MT_QUOTES = [
+  { text: 'The happiness of your life depends upon the quality of your thoughts.', author: 'Marcus Aurelius' },
+  { text: 'We suffer more often in imagination than in reality.', author: 'Seneca' },
+  { text: 'Very little is needed to make a happy life; it is all within yourself, in your way of thinking.', author: 'Marcus Aurelius' }
+];
+var MT_THEMES = {
+  home: { w1: 'rgba(255, 255, 255, 0.10)', w2: 'rgba(255, 255, 255, 0.16)', wTop: 'rgba(255, 255, 255, 0.26)', wBot: 'rgba(255, 255, 255, 0.10)' },
+  light: {
+    ink: '#0B2A3C', inkSoft: 'rgba(11, 42, 60, 0.74)', surface: 'rgba(255, 255, 255, 0.42)', border: 'rgba(255, 255, 255, 0.75)',
+    primaryBg: '#0B2A3C', primaryFg: '#EFFFF8', track: 'rgba(11, 42, 60, 0.14)', ringColor: '#0B2A3C', halo: 'rgba(255, 255, 255, 0.85)',
+    shadow: 'rgba(11, 42, 60, 0.28)', backdrop: 'rgba(11, 42, 60, 0.22)', sheetBg: 'rgba(255, 255, 255, 0.96)', sheetInk: '#0B2A3C',
+    sheetSoft: 'rgba(11, 42, 60, 0.72)', sheetLine: 'rgba(11, 42, 60, 0.14)',
+    w1: 'rgba(255, 255, 255, 0.22)', w2: 'rgba(255, 255, 255, 0.32)', wTop: 'rgba(255, 255, 255, 0.55)', wBot: 'rgba(82, 167, 193, 0.35)'
+  },
+  deep: {
+    ink: '#F2F6FF', inkSoft: 'rgba(242, 246, 255, 0.78)', surface: 'rgba(255, 255, 255, 0.08)', border: 'rgba(255, 255, 255, 0.18)',
+    primaryBg: '#7CF5C8', primaryFg: '#06173A', track: 'rgba(255, 255, 255, 0.14)', ringColor: '#7CF5C8', halo: 'rgba(124, 245, 200, 0.28)',
+    shadow: 'rgba(124, 245, 200, 0.22)', backdrop: 'rgba(3, 8, 30, 0.5)', sheetBg: '#111F4D', sheetInk: '#F2F6FF',
+    sheetSoft: 'rgba(242, 246, 255, 0.74)', sheetLine: 'rgba(255, 255, 255, 0.14)',
+    w1: 'rgba(32, 164, 243, 0.14)', w2: 'rgba(32, 164, 243, 0.22)', wTop: 'rgba(32, 164, 243, 0.34)', wBot: 'rgba(14, 24, 70, 0.92)'
+  }
+};
+var MT_MAX = 3 * 60 * 60 * 1000;
+
+class Component extends DCLogic {
+  state = { screen: 'home', mode: 'light', bg: 'home', leaving: false, total: 600000, remaining: 600000, status: 'idle', done: false, sound: true, quoteIndex: 0, doneMs: 0 };
+
+  componentWillUnmount() { this.stopTick(); clearTimeout(this.navTimer); }
+
+  speed() { var v = this.props.demoSpeed ?? '1x'; return v === '60x' ? 60 : v === '10x' ? 10 : 1; }
+
+  stopTick() { if (this.iv) { clearInterval(this.iv); this.iv = null; } }
+
+  go(screen, mode) {
+    if (this.state.leaving) return;
+    this.stopTick();
+    var m = mode || this.state.mode;
+    this.setState({ leaving: true, mode: m, bg: screen === 'home' ? 'home' : m });
+    clearTimeout(this.navTimer);
+    this.navTimer = setTimeout(() => {
+      this.setState({ screen: screen, leaving: false, status: 'idle', done: false, remaining: this.state.total });
+    }, 600);
+  }
+
+  tick() {
+    var now = Date.now();
+    var dt = (now - this.last) * this.speed();
+    this.last = now;
+    var r = Math.max(0, this.state.remaining - dt);
+    if (r <= 0) {
+      this.stopTick();
+      this.setState({ remaining: 0, status: 'idle', done: true, doneMs: this.state.total });
+    } else {
+      this.setState({ remaining: r });
+    }
+  }
+
+  togglePlay() {
+    var s = this.state;
+    if (s.status === 'running') { this.stopTick(); this.setState({ status: 'paused' }); return; }
+    if (s.remaining <= 0) return;
+    this.last = Date.now();
+    this.stopTick();
+    this.iv = setInterval(() => this.tick(), 200);
+    this.setState({ status: 'running' });
+  }
+
+  adjust(d) {
+    if (this.state.status !== 'idle') return;
+    var t = Math.min(MT_MAX, Math.max(0, this.state.remaining + d));
+    this.setState({ total: t, remaining: t });
+  }
+
+  fmt(ms) {
+    var secs = Math.ceil(ms / 1000);
+    var h = Math.floor(secs / 3600), m = Math.floor((secs % 3600) / 60), s = secs % 60;
+    var p = function (n) { return n < 10 ? '0' + n : '' + n; };
+    return h > 0 ? h + ':' + p(m) + ':' + p(s) : p(m) + ':' + p(s);
+  }
+
+  renderVals() {
+    var s = this.state;
+    var t = MT_THEMES[s.mode];
+    var wt = MT_THEMES[s.bg];
+    var isSession = s.screen === 'session';
+    var running = s.status === 'running', paused = s.status === 'paused', active = running || paused;
+    var progress = s.total > 0 ? Math.min(1, Math.max(0, 1 - s.remaining / s.total)) : 0;
+    var circ = 942.48;
+    var mins = Math.round(s.doneMs / 60000);
+    var modeName = s.mode === 'light' ? 'Light' : 'Deep';
+    var adjHidden = active;
+
+    return {
+      isHome: s.screen === 'home',
+      isSession: isSession,
+      leaveClass: s.leaving ? 'is-leaving' : '',
+      ink: isSession ? t.ink : '#FFFFFF',
+      inkSoft: t.inkSoft, surface: t.surface, border: t.border, primaryBg: t.primaryBg, primaryFg: t.primaryFg,
+      track: t.track, ringColor: t.ringColor, halo: t.halo, shadow: t.shadow, backdrop: t.backdrop,
+      sheetBg: t.sheetBg, sheetInk: t.sheetInk, sheetSoft: t.sheetSoft, sheetLine: t.sheetLine,
+      w1: wt.w1, w2: wt.w2, wTop: wt.wTop, wBot: wt.wBot,
+      homeOp: s.bg === 'home' ? 1 : 0, lightOp: s.bg === 'light' ? 1 : 0, deepOp: s.bg === 'deep' ? 1 : 0,
+      flowState: (!isSession || running) ? 'running' : 'paused',
+      waveHeight: isSession ? (16 + progress * 38) + '%' : '20%',
+
+      modeName: modeName,
+      timeText: this.fmt(s.remaining),
+      statusText: paused ? 'Paused' : (s.remaining <= 0 ? 'Add time to begin' : 'Ready when you are'),
+      isRunning: running, notRunning: !running, isActive: active, notActive: !active,
+      dashOffset: (circ * (1 - progress)).toFixed(2) + 'px',
+      ringOpacity: progress > 0 ? 1 : 0,
+
+      adjOpacity: adjHidden ? 0 : 1,
+      adjLeftT: adjHidden ? 'translateX(18px) scale(.85)' : 'none',
+      adjRightT: adjHidden ? 'translateX(-18px) scale(.85)' : 'none',
+      adjPointer: adjHidden ? 'none' : 'auto',
+      adjDisabled: adjHidden,
+
+      thumbX: s.mode === 'light' ? 'translateX(0)' : 'translateX(100%)',
+      segLightColor: s.mode === 'light' ? t.primaryFg : t.ink,
+      segDeepColor: s.mode === 'deep' ? t.primaryFg : t.ink,
+      lightPressed: s.mode === 'light' ? 'true' : 'false',
+      deepPressed: s.mode === 'deep' ? 'true' : 'false',
+      segDisabled: active,
+      segOpacity: active ? 0.55 : 1,
+
+      playLabel: running ? 'Pause' : 'Start',
+      playDisabled: !running && s.remaining <= 0,
+      playOpacity: (!running && s.remaining <= 0) ? 0.45 : 1,
+      soundOn: s.sound, soundOff: !s.sound, soundPressed: s.sound ? 'true' : 'false',
+
+      done: s.done,
+      doneText: 'You completed ' + (mins < 1 ? 'under a minute' : mins + (mins === 1 ? ' minute' : ' minutes')) + ' of ' + modeName + ' meditation.',
+      quote: MT_QUOTES[s.quoteIndex % MT_QUOTES.length],
+
+      pickLight: () => this.go('session', 'light'),
+      pickDeep: () => this.go('session', 'deep'),
+      goHome: () => this.go('home'),
+      setLight: () => { if (this.state.status === 'idle') this.setState({ mode: 'light', bg: 'light' }); },
+      setDeep: () => { if (this.state.status === 'idle') this.setState({ mode: 'deep', bg: 'deep' }); },
+      minus5m: () => this.adjust(-300000),
+      minus30s: () => this.adjust(-30000),
+      plus30s: () => this.adjust(30000),
+      plus5m: () => this.adjust(300000),
+      togglePlay: () => this.togglePlay(),
+      stop: () => { this.stopTick(); this.setState({ status: 'idle', remaining: this.state.total }); },
+      reset: () => this.setState({ total: 0, remaining: 0 }),
+      toggleSound: () => this.setState({ sound: !this.state.sound }),
+      again: () => this.setState({ done: false, status: 'idle', remaining: this.state.total, quoteIndex: this.state.quoteIndex + 1 }),
+      sheetHome: () => { this.setState({ done: false, quoteIndex: this.state.quoteIndex + 1 }); this.go('home'); }
+    };
+  }
+}
+</script>
+</body>
+</html>

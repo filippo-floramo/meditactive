@@ -1,0 +1,136 @@
+/**
+ * Flow: three stacked gradient layers with drifting radial blobs.
+ */
+
+/* Layers */
+[data-part="flow"],
+[data-part="layer"] {
+  position: absolute;
+  inset: 0;
+}
+
+[data-part="flow"] {
+  z-index: 0;
+}
+
+[data-part="layer"] {
+  opacity: 0;
+  transition: opacity 1.4s ease;
+}
+
+[data-scene="home"] [data-layer="home"],
+[data-scene="light"] [data-layer="light"],
+[data-scene="deep"] [data-layer="deep"] {
+  opacity: 1;
+}
+
+[data-layer="home"] {
+  background: linear-gradient(180deg, #0a3d91 0%, #0b64b0 45%, #0e93a8 82%, #23c9a6 100%);
+}
+
+[data-layer="light"] {
+  background: linear-gradient(160deg, #e6fbf2 0%, #b3f6d8 35%, #77d0cf 70%, #52a7c1 100%);
+}
+
+[data-layer="deep"] {
+  background: linear-gradient(160deg, #1e1f5c 0%, #2a3b88 40%, #2d58ae 75%, #2a6fc9 100%);
+}
+
+/* Blobs */
+[data-part="blob"] {
+  position: absolute;
+  width: 80vmax;
+  height: 80vmax;
+  border-radius: 50%;
+  will-change: transform;
+  animation: drift 26s ease-in-out infinite alternate;
+}
+
+[data-blob="2"] {
+  animation-duration: 34s;
+  animation-delay: -9s;
+}
+
+[data-blob="3"] {
+  animation-duration: 41s;
+  animation-delay: -17s;
+}
+
+[data-flow="paused"] [data-part="blob"] {
+  animation-play-state: paused;
+}
+
+[data-layer="home"] [data-blob="1"] {
+  top: -40%;
+  left: -25%;
+  background: radial-gradient(closest-side, rgb(3 122 222 / 0.8), rgb(3 122 222 / 0));
+}
+
+[data-layer="home"] [data-blob="2"] {
+  top: 25%;
+  right: -35%;
+  background: radial-gradient(closest-side, rgb(0 184 234 / 0.4), rgb(0 184 234 / 0));
+}
+
+[data-layer="home"] [data-blob="3"] {
+  bottom: -55%;
+  left: 5%;
+  background: radial-gradient(closest-side, rgb(3 229 183 / 0.55), rgb(3 229 183 / 0));
+}
+
+[data-layer="light"] [data-blob="1"] {
+  top: -40%;
+  left: -30%;
+  background: radial-gradient(closest-side, rgb(214 255 236 / 0.9), rgb(214 255 236 / 0));
+}
+
+[data-layer="light"] [data-blob="2"] {
+  top: 10%;
+  right: -40%;
+  background: radial-gradient(closest-side, rgb(147 227 212 / 0.75), rgb(147 227 212 / 0));
+}
+
+[data-layer="light"] [data-blob="3"] {
+  bottom: -50%;
+  left: 0%;
+  background: radial-gradient(closest-side, rgb(97 188 201 / 0.6), rgb(97 188 201 / 0));
+}
+
+[data-layer="deep"] [data-blob="1"] {
+  top: -40%;
+  left: -30%;
+  background: radial-gradient(closest-side, rgb(30 31 92 / 0.95), rgb(30 31 92 / 0));
+}
+
+[data-layer="deep"] [data-blob="2"] {
+  top: 15%;
+  right: -40%;
+  background: radial-gradient(closest-side, rgb(0 159 253 / 0.35), rgb(0 159 253 / 0));
+}
+
+[data-layer="deep"] [data-blob="3"] {
+  bottom: -55%;
+  left: -5%;
+  background: radial-gradient(closest-side, rgb(46 69 149 / 0.8), rgb(46 69 149 / 0));
+}
+
+@keyframes drift {
+  0% {
+    transform: translate3d(-8%, -6%, 0) scale(1);
+  }
+
+  50% {
+    transform: translate3d(7%, 5%, 0) scale(1.14);
+  }
+
+  100% {
+    transform: translate3d(-3%, 9%, 0) scale(0.94);
+  }
+}
+
+/* Reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  [data-part="blob"] {
+    animation: none;
+  }
+}

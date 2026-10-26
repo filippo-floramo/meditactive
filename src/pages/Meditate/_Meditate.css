@@ -1,0 +1,45 @@
+/**
+ * Meditate: top bar, timer row, and controls of the session screen.
+ */
+
+/* Top bar */
+header[data-part="session-bar"] {
+  position: absolute;
+  inset: 0 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 20px clamp(16px, 4vw, 40px);
+}
+
+header[data-part="session-bar"] > button {
+  width: 44px;
+  height: 44px;
+}
+
+header[data-part="session-bar"] svg {
+  width: 20px;
+  height: 20px;
+}
+
+header[data-part="session-bar"] svg[data-part="logo"] {
+  width: 26px;
+  height: 26px;
+  margin: 9px;
+}
+
+/* Session body */
+main[data-part="session"] {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 40px;
+}
+
+section[data-part="timer"] {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: clamp(10px, 4vw, 48px);
+}

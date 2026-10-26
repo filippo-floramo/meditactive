@@ -1,0 +1,96 @@
+/**
+ * ModeCard: glass card button on the home screen.
+ */
+
+/* Card */
+button[data-part="mode-card"] {
+  width: 100%;
+  min-height: 230px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 12px;
+  padding: 28px;
+  border-radius: 28px;
+  text-align: left;
+  color: #fff;
+  background-color: rgb(8 28 64 / 0.26);
+  border: 1px solid rgb(255 255 255 / 0.28);
+  backdrop-filter: blur(18px);
+  -webkit-backdrop-filter: blur(18px);
+  transition:
+    transform 0.6s var(--ease-out),
+    background-color 0.5s,
+    border-color 0.5s,
+    box-shadow 0.6s;
+}
+
+button[data-part="mode-card"]:hover {
+  transform: translateY(-6px);
+  background-color: rgb(8 28 64 / 0.38);
+  border-color: rgb(255 255 255 / 0.5);
+  box-shadow: 0 24px 60px rgb(4 16 48 / 0.28);
+}
+
+button[data-part="mode-card"]:active {
+  transform: translateY(-2px) scale(0.99);
+}
+
+/* Icon */
+[data-part="card-icon"] {
+  width: 52px;
+  height: 52px;
+  margin-bottom: 6px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+[data-part="card-icon"] svg {
+  width: 24px;
+  height: 24px;
+}
+
+[data-card="light"] [data-part="card-icon"] {
+  color: #0b2a3c;
+  background: linear-gradient(135deg, #b3f6d8, #52a7c1);
+}
+
+[data-card="deep"] [data-part="card-icon"] {
+  color: #fff;
+  background: linear-gradient(135deg, #009ffd, #2a2a72);
+}
+
+/* Text */
+[data-part="card-title"] {
+  font-size: 24px;
+  font-weight: 600;
+  letter-spacing: -0.01em;
+}
+
+[data-part="card-text"] {
+  font-size: 15px;
+  line-height: 1.5;
+  color: rgb(255 255 255 / 0.86);
+}
+
+/* Call to action */
+[data-part="card-cta"] {
+  margin-top: auto;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 14px;
+  font-weight: 600;
+}
+
+[data-part="card-cta"] svg {
+  width: 18px;
+  height: 18px;
+  transition: transform 0.4s var(--ease-out);
+}
+
+button[data-part="mode-card"]:hover [data-part="card-cta"] svg {
+  transform: translateX(5px);
+}

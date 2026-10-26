@@ -1,0 +1,92 @@
+/**
+ * Home: brand header, headline, and the two mode cards with a staggered rise.
+ */
+
+/* Brand header */
+header[data-part="brand"] {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 24px clamp(16px, 4vw, 40px);
+}
+
+header[data-part="brand"] svg[data-part="logo"] {
+  width: 30px;
+  height: 30px;
+}
+
+[data-part="brand-name"] {
+  font-size: 18px;
+  font-weight: 700;
+  letter-spacing: -0.01em;
+}
+
+/* Intro */
+main[data-part="intro"] {
+  max-width: 760px;
+  margin: 0 auto;
+  padding: clamp(24px, 8vh, 80px) 16px 180px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 16px;
+  text-align: center;
+}
+
+main[data-part="intro"] h1 {
+  font-size: clamp(32px, 5vw, 54px);
+  font-weight: 600;
+  letter-spacing: -0.025em;
+  line-height: 1.08;
+  text-wrap: balance;
+}
+
+[data-part="lead"] {
+  font-size: 17px;
+  line-height: 1.55;
+  color: rgb(255 255 255 / 0.86);
+}
+
+/* Mode cards */
+ul[data-part="modes"] {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 20px;
+  width: 100%;
+  margin-top: 36px;
+}
+
+ul[data-part="modes"] li {
+  flex: 1 1 240px;
+  max-width: 300px;
+  display: flex;
+}
+
+/* Staggered entrance: backwards fill so no filter lingers and breaks the cards' backdrop blur */
+main[data-part="intro"] h1,
+[data-part="lead"],
+ul[data-part="modes"] li {
+  animation: rise 1.1s var(--ease-out) backwards;
+}
+
+[data-part="lead"] {
+  animation-delay: 0.1s;
+}
+
+ul[data-part="modes"] li:nth-child(1) {
+  animation-delay: 0.22s;
+}
+
+ul[data-part="modes"] li:nth-child(2) {
+  animation-delay: 0.34s;
+}
+
+/* Reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  main[data-part="intro"] h1,
+  [data-part="lead"],
+  ul[data-part="modes"] li {
+    animation-duration: 0.01s;
+  }
+}

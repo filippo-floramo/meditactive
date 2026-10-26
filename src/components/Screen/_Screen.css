@@ -1,0 +1,24 @@
+/**
+ * Screen: absolutely positioned route layer above the background.
+ */
+
+/* Layer */
+[data-part="screen"] {
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+}
+
+[data-screen="home"] {
+  overflow-y: auto;
+  color: #fff;
+}
+
+[data-screen="session"] {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 96px 16px 64px;
+  color: var(--ink);
+}

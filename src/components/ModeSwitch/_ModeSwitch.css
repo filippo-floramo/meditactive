@@ -1,0 +1,59 @@
+/**
+ * ModeSwitch: segmented Light/Deep control; locked while a session is active.
+ */
+
+/* Track */
+fieldset[data-part="mode-switch"] {
+  position: relative;
+  display: inline-flex;
+  min-inline-size: 0;
+  padding: 4px;
+  border-radius: 999px;
+  background-color: var(--surface);
+  border: 1px solid var(--border);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  transition:
+    opacity 0.5s,
+    background-color 1.2s,
+    border-color 1.2s;
+}
+
+fieldset[data-part="mode-switch"]:disabled {
+  opacity: 0.55;
+}
+
+/* Thumb */
+[data-part="thumb"] {
+  position: absolute;
+  inset-block: 4px;
+  left: 4px;
+  width: calc(50% - 4px);
+  border-radius: 999px;
+  background-color: var(--primary-bg);
+  transition:
+    transform 0.7s var(--ease-out),
+    background-color 1.2s;
+}
+
+[data-mode="deep"] [data-part="thumb"] {
+  transform: translateX(100%);
+}
+
+/* Segments */
+fieldset[data-part="mode-switch"] button {
+  position: relative;
+  width: 92px;
+  height: 40px;
+  border: 0;
+  border-radius: 999px;
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--ink);
+  background: transparent;
+  transition: color 0.6s;
+}
+
+fieldset[data-part="mode-switch"] button[aria-pressed="true"] {
+  color: var(--primary-fg);
+}

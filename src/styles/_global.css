@@ -1,0 +1,174 @@
+/**
+ * Global base: reset, typography, theme tokens, shared button looks, shared keyframes.
+ * Theme values come from MT_THEMES in design/meditactive-redesign.html.
+ */
+
+/* Reset */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: "Manrope", system-ui, sans-serif;
+  color: #fff;
+  background: #0a3d91;
+  -webkit-font-smoothing: antialiased;
+}
+
+h1,
+h2,
+p,
+ul,
+menu,
+fieldset {
+  margin: 0;
+  padding: 0;
+}
+
+ul,
+menu {
+  list-style: none;
+}
+
+/* Theme tokens: session colors follow the chosen mode */
+[data-part="stage"] {
+  --ease-out: cubic-bezier(0.2, 0.8, 0.2, 1);
+  --ease-move: cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+[data-part="stage"][data-mode="light"] {
+  --ink: #0b2a3c;
+  --ink-soft: rgb(11 42 60 / 0.74);
+  --surface: rgb(255 255 255 / 0.42);
+  --border: rgb(255 255 255 / 0.75);
+  --primary-bg: #0b2a3c;
+  --primary-fg: #effff8;
+  --track: rgb(11 42 60 / 0.14);
+  --ring: #0b2a3c;
+  --halo: rgb(255 255 255 / 0.85);
+  --shadow: rgb(11 42 60 / 0.28);
+  --backdrop: rgb(11 42 60 / 0.22);
+  --sheet-bg: rgb(255 255 255 / 0.96);
+  --sheet-ink: #0b2a3c;
+  --sheet-soft: rgb(11 42 60 / 0.72);
+  --sheet-line: rgb(11 42 60 / 0.14);
+}
+
+[data-part="stage"][data-mode="deep"] {
+  --ink: #f2f6ff;
+  --ink-soft: rgb(242 246 255 / 0.78);
+  --surface: rgb(255 255 255 / 0.08);
+  --border: rgb(255 255 255 / 0.18);
+  --primary-bg: #7cf5c8;
+  --primary-fg: #06173a;
+  --track: rgb(255 255 255 / 0.14);
+  --ring: #7cf5c8;
+  --halo: rgb(124 245 200 / 0.28);
+  --shadow: rgb(124 245 200 / 0.22);
+  --backdrop: rgb(3 8 30 / 0.5);
+  --sheet-bg: #111f4d;
+  --sheet-ink: #f2f6ff;
+  --sheet-soft: rgb(242 246 255 / 0.74);
+  --sheet-line: rgb(255 255 255 / 0.14);
+}
+
+/* Theme tokens: wave colors follow the visible scene */
+[data-part="stage"][data-scene="home"] {
+  --w1: rgb(255 255 255 / 0.1);
+  --w2: rgb(255 255 255 / 0.16);
+  --w-top: rgb(255 255 255 / 0.26);
+  --w-bot: rgb(255 255 255 / 0.1);
+}
+
+[data-part="stage"][data-scene="light"] {
+  --w1: rgb(255 255 255 / 0.22);
+  --w2: rgb(255 255 255 / 0.32);
+  --w-top: rgb(255 255 255 / 0.55);
+  --w-bot: rgb(82 167 193 / 0.35);
+}
+
+[data-part="stage"][data-scene="deep"] {
+  --w1: rgb(32 164 243 / 0.14);
+  --w2: rgb(32 164 243 / 0.22);
+  --w-top: rgb(32 164 243 / 0.34);
+  --w-bot: rgb(14 24 70 / 0.92);
+}
+
+/* Buttons */
+button {
+  font: inherit;
+  cursor: pointer;
+  transition:
+    transform 0.35s var(--ease-out),
+    background-color 1.2s,
+    color 1.2s,
+    border-color 1.2s,
+    opacity 0.4s,
+    box-shadow 0.4s;
+}
+
+button:disabled {
+  cursor: default;
+}
+
+button:focus-visible {
+  outline: 2px solid currentColor;
+  outline-offset: 3px;
+}
+
+button[data-variant]:hover:not(:disabled) {
+  transform: scale(1.05);
+}
+
+button[data-variant]:active:not(:disabled) {
+  transform: scale(0.95);
+}
+
+button[data-variant="glass"] {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  color: var(--ink);
+  background-color: var(--surface);
+  border: 1px solid var(--border);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+}
+
+button[data-variant="primary"] {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 0;
+  color: var(--primary-fg);
+  background-color: var(--primary-bg);
+}
+
+/* Assistive text */
+[data-part="visually-hidden"] {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip-path: inset(50%);
+  white-space: nowrap;
+}
+
+/* Shared keyframes */
+@keyframes rise {
+  from {
+    opacity: 0;
+    transform: translateY(16px) scale(0.985);
+    filter: blur(6px);
+  }
+}
+
+@keyframes fade {
+  from {
+    opacity: 0;
+  }
+}

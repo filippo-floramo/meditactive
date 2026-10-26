@@ -1,0 +1,105 @@
+/**
+ * CompletionSheet: modal dialog with a blurred backdrop and a spring entrance.
+ */
+
+/* Backdrop */
+dialog[data-part="sheet"]::backdrop {
+  background-color: var(--backdrop);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  animation: fade 0.5s ease both;
+}
+
+/* Sheet */
+dialog[data-part="sheet"] {
+  width: calc(100% - 32px);
+  max-width: 460px;
+  padding: 36px 32px 28px;
+  border: 0;
+  border-radius: 32px;
+  text-align: center;
+  color: var(--sheet-ink);
+  background-color: var(--sheet-bg);
+  box-shadow: 0 30px 80px rgb(4 16 40 / 0.35);
+  animation: sheet 0.9s cubic-bezier(0.2, 1.15, 0.3, 1) 0.1s both;
+}
+
+dialog[data-part="sheet"][open] {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 14px;
+}
+
+@keyframes sheet {
+  from {
+    opacity: 0;
+    transform: translateY(56px) scale(0.95);
+  }
+}
+
+/* Content */
+[data-part="sheet-badge"] {
+  width: 56px;
+  height: 56px;
+  margin-bottom: 4px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--primary-fg);
+  background-color: var(--primary-bg);
+}
+
+[data-part="sheet-badge"] svg {
+  width: 26px;
+  height: 26px;
+}
+
+dialog[data-part="sheet"] h2 {
+  font-size: 28px;
+  font-weight: 600;
+  letter-spacing: -0.015em;
+}
+
+dialog[data-part="sheet"] p {
+  font-size: 15px;
+  line-height: 1.5;
+  color: var(--sheet-soft);
+}
+
+/* Actions */
+menu[data-part="sheet-actions"] {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  width: 100%;
+  margin-top: 10px;
+}
+
+menu[data-part="sheet-actions"] li {
+  flex: 1 1 140px;
+  display: flex;
+}
+
+menu[data-part="sheet-actions"] button {
+  width: 100%;
+  height: 50px;
+  border-radius: 999px;
+  font-size: 15px;
+  font-weight: 600;
+}
+
+button[data-variant="outline"] {
+  color: var(--sheet-ink);
+  background-color: transparent;
+  border: 1px solid var(--sheet-line);
+}
+
+/* Reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  dialog[data-part="sheet"],
+  dialog[data-part="sheet"]::backdrop {
+    animation-duration: 0.01s;
+  }
+}

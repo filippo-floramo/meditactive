@@ -1,0 +1,89 @@
+/**
+ * Waves: three translating SVG bands that rise with session progress.
+ */
+
+/* Container */
+[data-part="waves"] {
+  position: absolute;
+  inset: auto 0 0;
+  z-index: 1;
+  height: 20%;
+  pointer-events: none;
+  transition: height 1.6s var(--ease-move);
+}
+
+[data-part="stage"]:not([data-scene="home"]) [data-part="waves"] {
+  height: calc(16% + var(--progress, 0) * 38%);
+}
+
+/* Bands */
+[data-part="wave-band"] {
+  position: absolute;
+  inset: auto 0 0;
+  overflow: hidden;
+}
+
+[data-wave="back"] {
+  height: 100%;
+}
+
+[data-wave="middle"] {
+  height: 84%;
+}
+
+[data-wave="front"] {
+  height: 66%;
+}
+
+/* Wave shapes */
+svg[data-part="wave"] {
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 200%;
+  height: 100%;
+  will-change: transform;
+  animation: wave 16s linear infinite;
+}
+
+[data-wave="middle"] svg[data-part="wave"] {
+  animation-duration: 22s;
+  animation-direction: reverse;
+}
+
+[data-wave="front"] svg[data-part="wave"] {
+  animation-duration: 12s;
+}
+
+[data-wave="back"] path {
+  fill: var(--w1);
+  transition: fill 1.4s;
+}
+
+[data-wave="middle"] path {
+  fill: var(--w2);
+  transition: fill 1.4s;
+}
+
+[data-part="stop-top"] {
+  stop-color: var(--w-top);
+  transition: stop-color 1.4s;
+}
+
+[data-part="stop-bottom"] {
+  stop-color: var(--w-bot);
+  transition: stop-color 1.4s;
+}
+
+@keyframes wave {
+  to {
+    transform: translate3d(-50%, 0, 0);
+  }
+}
+
+/* Reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  svg[data-part="wave"] {
+    animation: none;
+  }
+}
